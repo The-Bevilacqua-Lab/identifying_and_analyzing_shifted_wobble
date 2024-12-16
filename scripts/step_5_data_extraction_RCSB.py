@@ -306,7 +306,7 @@ D5= D4.drop(['data_ext'], axis=1)
 
 #store the finalized data as csv
 #for standard wobble
-#D5.to_csv('all_standard_wobble_RCSB_data.csv')
+#D5.to_csv('all_standard_wobble_RCSB_data.csv', index= False)
 
 #for shifted wobble
-D5.to_csv('all_shifted_wobble_RCSB_data.csv')
+D5.to_csv('all_shifted_wobble_RCSB_data.csv', index= False)
