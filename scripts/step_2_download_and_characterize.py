@@ -40,13 +40,14 @@ optparser = OptionParser()
 cif_dir = args[0]
 
 D1= pd.read_csv('structures_within_3.2_resolution.csv')
+D2= fix_PDB_ID(D1)
 
 #home directory where this script is stored
 home= os.getcwd()
 
 #read PDB_IDs from D7 and downloading in cif_dir
 os.chdir(cif_dir)
-for ind, PID in enumerate(D1['PDB_ID']):
+for ind, PID in enumerate(D2['PDB_ID']):
     print (PID)
     
     pdbname= cif_dir+ '/'+ PID+ '.cif'
