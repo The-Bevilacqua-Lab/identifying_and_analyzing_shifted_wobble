@@ -86,7 +86,6 @@ D6['Resolution_(Å)'] = pd.to_numeric(D5['Resolution_(Å)'], errors='coerce')
 D7= D6[(D6['Resolution_(Å)']<3.2) | (D6['Resolution_(Å)']==3.2) ]
 D7.index = np.arange(0, len(D7))
 
-#D6 dataframe contain the PDB_IDs for the structures within user defined resolution cut-off
+#D7 dataframe contain the PDB_IDs for the structures within user defined resolution cut-off
 #this dataframe will be used in the next step to download and characterize the structures by DSSR
-
 D7.to_csv('structures_within_'+ str(R)+ '_resolution.csv', index= False)
