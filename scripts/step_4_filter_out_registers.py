@@ -279,5 +279,8 @@ D7.index= np.arange(0, len(D7)) #reindexing
 D8= D7.drop(drp_cols, axis=1) #drop hbond columns 
 
 #save output dataframes to data folder
-D6.to_csv('shifted_GU_with_hbonds.csv', index= False)
-D8.to_csv('shifted_GU_without_hbonds.csv', index=False)
+#D6.to_csv('data/standard_GU_with_hbonds.csv', index= False)
+#D8.to_csv('data/standard_GU_without_hbonds.csv', index=False)
+
+#D6.to_csv('data/shifted_GU_with_hbonds.csv', index= False)
+D8.to_csv('data/shifted_GU_without_hbonds.csv', index=False)
