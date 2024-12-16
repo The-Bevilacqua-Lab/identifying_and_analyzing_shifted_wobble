@@ -40,7 +40,7 @@ optparser = OptionParser()
 (options, args) = optparser.parse_args()
 cif_dir = args[0]
 
-D1= pd.read_csv('structures_within_3.2_resolution.csv')
+D1= pd.read_csv('data/structures_within_3.2_resolution.csv')
 print ('-----------------------------')
 print (D1.shape)
 D2= fix_PDB_ID(D1)
@@ -97,4 +97,4 @@ os.chdir(home)
 #print (all_bps)
 #print (all_GUs)
 
-all_GUs.to_csv('all_GU_base_pairs.csv', index= False)
+all_GUs.to_csv('data/all_GU_base_pairs.csv', index= False)
