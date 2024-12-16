@@ -34,21 +34,19 @@ def fix_PDB_ID(df):
     return (df)
 
 #directory to store the cif files
-#cif_dir= '/Users/sharear/Documents/sky/RESEARCH_&_GRAD_SCHOOL/Penn_State/anionic_G_U/get_all_RNA/new_data_April_2023/test_CIFS_delete'
+#make sure this directory contain the executible DSSR
 optparser = OptionParser()
 (options, args) = optparser.parse_args()
 cif_dir = args[0]
 
 D1= pd.read_csv('structures_within_3.2_resolution.csv')
 
-D1_test = D1.sample(n= 5, random_state= 36)
-
 #home directory where this script is stored
 home= os.getcwd()
 
 #read PDB_IDs from D7 and downloading in cif_dir
 os.chdir(cif_dir)
-for ind, PID in enumerate(D1_test['PDB_ID']):
+for ind, PID in enumerate(D1['PDB_ID']):
     print (PID)
     
     pdbname= cif_dir+ '/'+ PID+ '.cif'
