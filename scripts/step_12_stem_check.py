@@ -222,6 +222,6 @@ def get_key(value):
 D1['location_in_secondary_structure'] = D1['bp_ID'].apply(get_key)
 
 if R==1:
-    D1.to_csv('nr_standard_wobble_2D_loc.csv', index= False)
+    D1.to_csv('results/nr_standard_wobble_2D_loc.csv', index= False)
 elif R==2:
-    D1.to_csv('nr_shifted_wobble_2D_loc.csv', index= False)
+    D1.to_csv('results/nr_shifted_wobble_2D_loc.csv', index= False)

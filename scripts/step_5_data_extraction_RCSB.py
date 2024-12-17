@@ -244,6 +244,8 @@ def dict_pc_id(df):
 optparser = OptionParser()
 (options, args) = optparser.parse_args()
 csvfile = args[0]
+
+R= args[1]
 D1= pd.read_csv(csvfile)
 
 #we are checking now if there is any PDB_ID issue like '5E54' becoming '5.00E+54'
@@ -306,8 +308,10 @@ for i, j in enumerate(D4['data_ext']):
 D5= D4.drop(['data_ext'], axis=1)
 
 #store the finalized data as csv
-#for standard wobble
-#D5.to_csv('all_standard_wobble_RCSB_data.csv', index= False)
-
-#for shifted wobble
-D5.to_csv('all_shifted_wobble_RCSB_data.csv', index= False)
+#store the finalized data as csv
+if R==1:
+    #for standard wobble
+    D5.to_csv('results/all_standard_wobble_RCSB_data.csv', index= False)
+elif R==2:
+    #for shifted wobble
+    D5.to_csv('results/all_shifted_wobble_RCSB_data.csv', index= False)
