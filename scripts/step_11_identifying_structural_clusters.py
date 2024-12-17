@@ -476,4 +476,4 @@ D1['bp_ID']= D1['bp_ID'].str.replace('-', '_', regex=False)
 D1['cluster'] = D1['bp_ID'].apply(get_key)
 D1['cluster'] = D1['cluster'].fillna('unclustered')
 
-D1.to_csv('results/nr_shifted_wobble_structural_clusters.csv', index= False)
+D1.to_csv('../results/nr_shifted_wobble_structural_clusters.csv', index= False)

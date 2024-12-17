@@ -1148,8 +1148,8 @@ D2= tert_intr(D1, R)
 
 if R==1:
     #for standard wobble
-    D2.to_csv('results/all_standard_wobble_with_non_WCF_interactions.csv', index= False)
+    D2.to_csv('../results/all_standard_wobble_with_non_WCF_interactions.csv', index= False)
 elif R==2:
     #for shifted wobble
-    D2.to_csv('results/all_shifted_wobble_with_non_WCF_interaction.csv', index= False)
+    D2.to_csv('../results/all_shifted_wobble_with_non_WCF_interaction.csv', index= False)
 

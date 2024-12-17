@@ -72,14 +72,14 @@ for i, j in enumerate(D1['bp_ID']):
     print (str(count)+'. working here ------------------------------------------> '+ str(j))
     p_ID= j.split('_')[0]
     #7M4Y_a_U1083-a_G1096
-    res1= j.split('-')[0].split('_')[2]
+    res1= j.split('_')[2]
     res1_index= int(res1[1:]) #index for residue 1
     res1_above= res1_index+1 #index for residue one step above of residue 1
     res1_above1= res1_index+2#index for residue two steps above of residue 1
     res1_below= res1_index-1 #index for residue one step below of residue 1
     res1_below1= res1_index-2#index for residue two steps below of residue 1
 
-    res2= j.split('-')[1].split('_')[1]
+    res2= j.split('_')[4]
     res2_index= int(res2[1:]) #index for residue 2
     res2_above= res2_index-1 #index for residue one step above of residue 2
     res2_above1= res2_index-2#index for residue two steps above of residue 2
@@ -224,7 +224,7 @@ D1['location_in_secondary_structure'] = D1['bp_ID'].apply(get_key)
 
 if R==1:
     #for standard wobble
-    D1.to_csv('results/all_standard_wobble_2D_loc.csv', index= False)
+    D1.to_csv('../results/all_standard_wobble_2D_loc.csv', index= False)
 elif R==2:
     #for shifted wobble
-    D1.to_csv('results/all_shifted_wobble_2D_loc.csv', index= False)
+    D1.to_csv('../results/all_shifted_wobble_2D_loc.csv', index= False)

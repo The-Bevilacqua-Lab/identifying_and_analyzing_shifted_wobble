@@ -380,7 +380,7 @@ D3= get_info_structure(D2, R)
 #store the finalized data as csv
 if R==1:
     #for standard wobble
-    D3.to_csv('all_standard_wobble_structure_data.csv')
+    D3.to_csv('../results/all_standard_wobble_structure_data.csv')
 elif R==2:
     #for shifted wobble
-    D3.to_csv('results/all_shifted_wobble_structure_data.csv')
+    D3.to_csv('../results/all_shifted_wobble_structure_data.csv')
