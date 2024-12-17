@@ -1,3 +1,4 @@
+#importing required libraries
 import os
 import pandas as pd
 import numpy as np
@@ -266,7 +267,7 @@ D4.insert (6, 'Source_Organism', '')
 D4.insert (7, 'Expressed_Organism', '')
 D4.insert (8, 'Chain_length_reference', '')
 
-D4.insert (9, 'data_ext', df1['PDB_ID']+'_'+df1['chain_ID']) #location of this column does not matter, because at the end we are going to delete this column
+D4.insert (9, 'data_ext', D4['PDB_ID']+'_'+D4['chain_ID']) #location of this column does not matter, because at the end we are going to delete this column
 
 
 #Step 2: create a dictionary, where keys will be PC_ID (PDB ID_chain ID) from 'data_ext' column
