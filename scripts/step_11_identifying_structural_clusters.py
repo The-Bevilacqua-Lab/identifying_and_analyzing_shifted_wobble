@@ -161,21 +161,21 @@ def clip(p, c, s, l, n, h, m, F):
         
         #renumber the residue index starting from 1
         
-        print ('=============================================================')
-        init_res_ind= list(set(p3_m['_atom_site.auth_seq_id'].to_list()))
-        print (init_res_ind)
-        init_res_ind.sort()
+        #print ('=============================================================')
+        #init_res_ind= list(set(p3_m['_atom_site.auth_seq_id'].to_list()))
+        #print (init_res_ind)
+        #init_res_ind.sort()
         
-        ind_count= 0
-        ind_dict={}
-        for ind_ind, ind_val in enumerate(init_res_ind):
-            ind_count +=1
-            ind_dict[ind_val]= str(ind_count)
+        #ind_count= 0
+        #ind_dict={}
+        #for ind_ind, ind_val in enumerate(init_res_ind):
+        #    ind_count +=1
+        #    ind_dict[ind_val]= str(ind_count)
         
-        p3_m['_atom_site.auth_seq_id'] = p3_m['_atom_site.auth_seq_id'].replace(ind_dict)
-        final_res_ind= list(set(p3_m['_atom_site.auth_seq_id'].to_list()))
-        print (final_res_ind)
-        print ('=============================================================')
+        #p3_m['_atom_site.auth_seq_id'] = p3_m['_atom_site.auth_seq_id'].replace(ind_dict)
+        #final_res_ind= list(set(p3_m['_atom_site.auth_seq_id'].to_list()))
+        #print (final_res_ind)
+        #print ('=============================================================')
         
         #Creating dataframe for the column name
         c_intrst_1= ['_atom_site.group_PDB', '_atom_site.id', '_atom_site.type_symbol',
@@ -234,9 +234,9 @@ def generate_str(df, tar_dir, fln):
         p= nr_df['PDB_ID'][k]
         c= nr_df['chain_ID'][k]
         s= nr_df['seg_ID'][k]
-        resn_list_motif= [k for k in range(res1_index-fln, res2_index+fln+1)]
+        resn_list_motif= [res1_index-fln, res1_index, res1_index+fln, res2_index-1, res2_index, res2_index+1]
         resn_list_motif.sort()
-        filename= j+'_'+l
+        filename= l
         cls_str= clip(p, c, s, resn_list_motif, '', 'N', 'Y', filename)
 
     os.chdir(home)
@@ -396,7 +396,7 @@ D1= pd.read_csv(csvfile)
 
 tar_dir= args[1]
 
-fln= args[2]
+fln= int(args[2])
 
 #generating structures for alignment
 generate_str(D1, tar_dir, fln)
@@ -472,7 +472,7 @@ def get_key(value):
     for key, values in cl_dict.items():
         if value in values:
             return key
-        
+D1['bp_ID']= D1['bp_ID'].str.replace('-', '_', regex=False)        
 D1['cluster'] = D1['bp_ID'].apply(get_key)
 D1['cluster'] = D1['cluster'].fillna('unclustered')
 
