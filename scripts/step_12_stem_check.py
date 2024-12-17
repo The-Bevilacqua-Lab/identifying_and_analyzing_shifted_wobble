@@ -6,6 +6,7 @@ import json
 import numpy as np
 from optparse import OptionParser
 
+#functions
 def get_bps(jfile, chain_ID, res1_index, res2_index):
     #this function will extract the base pair of interest for five locations (two base pair next to the wobble, wobble base pair itself, and two base pair before the wobble)
     with open(jfile, 'r') as f:
@@ -222,6 +223,8 @@ def get_key(value):
 D1['location_in_secondary_structure'] = D1['bp_ID'].apply(get_key)
 
 if R==1:
-    D1.to_csv('results/nr_standard_wobble_2D_loc.csv', index= False)
+    #for standard wobble
+    D1.to_csv('results/all_standard_wobble_2D_loc.csv', index= False)
 elif R==2:
-    D1.to_csv('results/nr_shifted_wobble_2D_loc.csv', index= False)
+    #for shifted wobble
+    D1.to_csv('results/all_shifted_wobble_2D_loc.csv', index= False)
