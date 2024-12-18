@@ -1,0 +1,50 @@
+identify_and_characterize_shifted_wobble
+├── LICENSE
+├── README.md
+├── data
+│   ├── rcsb_pdb_custom_report_68e1ca6d11520b83e299cb7193c01d8c_00001-02500.csv
+│   ├── rcsb_pdb_custom_report_68e1ca6d11520b83e299cb7193c01d8c_02501-05000.csv
+│   ├── rcsb_pdb_custom_report_68e1ca6d11520b83e299cb7193c01d8c_05001-07500.csv
+│   ├── rcsb_pdb_custom_report_68e1ca6d11520b83e299cb7193c01d8c_07501-10000.csv
+│   ├── rcsb_pdb_custom_report_68e1ca6d11520b83e299cb7193c01d8c_10001-12500.csv
+│   └── rcsb_pdb_custom_report_68e1ca6d11520b83e299cb7193c01d8c_12501-13516.csv
+├── folder_structure.txt
+├── results
+│   ├── all_against_all_RMSD_nr_shifted_wobbles.csv
+│   ├── all_red_good_shifted_wobble.csv
+│   ├── all_red_good_standard_wobble.csv
+│   ├── all_shifted_wobble_2D_loc.csv
+│   ├── all_shifted_wobble_RCSB_data.csv
+│   ├── all_shifted_wobble_redundancy_checked.csv
+│   ├── all_shifted_wobble_residue_index_adjusted.csv
+│   ├── all_shifted_wobble_structure_data.csv
+│   ├── all_shifted_wobble_with_non_WCF_interaction.csv
+│   ├── all_standard_wobble_RCSB_data.csv
+│   ├── all_standard_wobble_redundancy_checked.csv
+│   ├── all_standard_wobble_residue_index_adjusted.csv
+│   ├── all_standard_wobble_structure_data.csv
+│   ├── nr_shifted_wobble_map_model_cc.csv
+│   ├── nr_shifted_wobble_structural_clusters.csv
+│   ├── shifted_GU_without_hbonds.csv
+│   ├── standard_GU_without_hbonds.csv
+│   └── structures_within_3.2_resolution.csv
+└── scripts
+    ├── plot_scripts
+    ├── step_10_analyze_map_model_cc.py
+    ├── step_11_identifying_structural_clusters.py
+    ├── step_12_stem_check.py
+    ├── step_13_non_WCF_check.py
+    ├── step_14_assigning_consensus_1D_2D.ipynb
+    ├── step_1_data_preparation.py
+    ├── step_2_download_and_characterize.py
+    ├── step_3_filter_out_bp.py
+    ├── step_4_filter_out_registers.py
+    ├── step_5_data_extraction_RCSB.py
+    ├── step_6_data_extraction_structure.py
+    ├── step_7_filter_and_quality_check.py
+    ├── step_8_adjust_res_index.py
+    ├── step_9_redundancy_check.py
+    ├── structures_within_3.2_resolution.csv
+    └── test_steps.ipynb
+
+5 directories, 43 files
