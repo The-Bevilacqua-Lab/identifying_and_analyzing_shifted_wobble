@@ -1,5 +1,5 @@
-# Identify and analyzing shifted wobble
-This pipeline will take the search output from RCSB protein databank to identify and characterize different orientations of wobbles. 
+# Identifying and analyzing shifted wobble
+This pipeline will take the search output from the RCSB protein databank to identify and characterize different orientations of wobbles. 
 ## Setup instructions
 - Install Python >= 3.8
 - Install required libraries:
