@@ -4,7 +4,6 @@ import pandas as pd
 from pymol import cmd, stored
 from pymol import stored
 from optparse import OptionParser
-from subprocess import call
 import numpy as np
 
 #functions
