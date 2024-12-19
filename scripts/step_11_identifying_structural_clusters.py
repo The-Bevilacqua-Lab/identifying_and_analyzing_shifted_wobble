@@ -2,7 +2,6 @@
 import os
 import pandas as pd
 import requests
-import shutil 
 import numpy as np
 from Bio.PDB import MMCIFParser, Superimposer, PDBIO
 from Bio.PDB.QCPSuperimposer import QCPSuperimposer

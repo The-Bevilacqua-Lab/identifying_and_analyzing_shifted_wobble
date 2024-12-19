@@ -115,16 +115,7 @@ for i, j in enumerate(D1['bp_ID']):
         bp_below1= df_below1['bp'].to_list()[0]
         D1.loc[(D1['bp_ID']==j), "bp_2_below"] =  bp_below1 #bp two steps below
 
-    
-
-    
-
     if len(df_bps)== 5:
-        #df_above= df_bps[(df_bps['nt1_resi']== str(res1_above))&(df_bps['nt2_resi']== str(res2_above))]
-        #########df_above1
-
-        #df_below= df_bps[(df_bps['nt1_resi']== str(res1_below))&(df_bps['nt2_resi']== str(res2_below))]
-        #########df_below1
         flnk_ind= []
         flnk_ind.append(df_bps.loc[3]['nt1_resi'])
         flnk_ind.append(df_bps.loc[1]['nt1_resi'])
@@ -144,29 +135,10 @@ for i, j in enumerate(D1['bp_ID']):
             right_top= int(flnk_ind_1[2])
             right_bottom= int(flnk_ind_1[3])
 
-
-
-
-        #left_top= int(df_bps.loc[3]['nt1_resi'])
-        #left_bottom= int(df_bps.loc[1]['nt1_resi'])
-
-        #right_top= int(df_bps.loc[3]['nt2_resi'])
-        #right_bottom= int(df_bps.loc[1]['nt2_resi'])
     
             if len(df_below)>0 and len(df_above)>0:
                 #these are examples where wobbles are within a stem
                 sec_str_loc['stem'].append(j)
-
-                #bp_above= df_above['bp'].to_list()[0]
-                #print (bp_above)
-                #bp_below= df_below['bp'].to_list()[0]
-                #print (bp_below)
-                #print (df_bps)
-
-                #D1.loc[(D1['bp_ID']==j), "bp_above"] =  bp_above
-                #########D1.loc[(D1['bp_ID']==j), "bp_above1"] =  bp_above1
-                #D1.loc[(D1['bp_ID']==j), "bp_below"] =  bp_below
-                #########D1.loc[(D1['bp_ID']==j), "bp_below1"] =  bp_below1
     
             if len(df_above)==0 and len(df_below)==0:
         
