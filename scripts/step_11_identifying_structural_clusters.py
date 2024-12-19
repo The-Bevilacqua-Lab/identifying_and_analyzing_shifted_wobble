@@ -161,22 +161,6 @@ def clip(p, c, s, l, n, h, m, F):
         
         #renumber the residue index starting from 1
         
-        #print ('=============================================================')
-        #init_res_ind= list(set(p3_m['_atom_site.auth_seq_id'].to_list()))
-        #print (init_res_ind)
-        #init_res_ind.sort()
-        
-        #ind_count= 0
-        #ind_dict={}
-        #for ind_ind, ind_val in enumerate(init_res_ind):
-        #    ind_count +=1
-        #    ind_dict[ind_val]= str(ind_count)
-        
-        #p3_m['_atom_site.auth_seq_id'] = p3_m['_atom_site.auth_seq_id'].replace(ind_dict)
-        #final_res_ind= list(set(p3_m['_atom_site.auth_seq_id'].to_list()))
-        #print (final_res_ind)
-        #print ('=============================================================')
-        
         #Creating dataframe for the column name
         c_intrst_1= ['_atom_site.group_PDB', '_atom_site.id', '_atom_site.type_symbol',
                '_atom_site.label_atom_id', '_atom_site.label_alt_id',
@@ -279,10 +263,6 @@ def who_is_missing(structure, r1, r2):
 ##residues1_not_missing= who_is_missing(structure1, 1086, 1099)
 ##residues2_not_missing= who_is_missing(structure2, 1083, 1096)
 
-##print ('$$$$$$$$$$$$')
-##print (residues1_not_missing)
-##print (residues2_not_missing)
-##print ('$$$$$$$$$$$$')
 
 ##common_index= list(set(residues1_not_missing).intersection(residues2_not_missing))
 ##print (common_index)
@@ -323,12 +303,6 @@ def align(str1, str2):
     str2_res1= int(str2.split('_')[2].split('-')[0][1:].rstrip('.cif'))
     str2_res2= int(str2.split('_')[3][1:].rstrip('.cif'))
 
-    ##str1_res1= int(str1.split('_')[1].split('.')[1][1:])
-    ##str1_res2= int(str1.split('_')[2].split('.')[1][1:])
-
-    ##str2_res1= int(str2.split('_')[1].split('.')[1][1:])
-    ##str2_res2= int(str2.split('_')[2].split('.')[1][1:])
-
     #find residues which will be considered to calculate RMSD
     str1_good_res= who_is_missing(structure1, str1_res1, str1_res2) #good residues in structure1
     str2_good_res= who_is_missing(structure2, str2_res1, str2_res2) #good residues in structure2
@@ -352,8 +326,6 @@ def align_all_against_all(dr):
     RMSDs={}
     for filename in os.listdir('.'):
         if filename.endswith('.cif'):
-            #clmns.append(filename.rstrip('.cif')[5:])
-            #filenames.append(filename.rstrip('.cif')[5:])
             clmns.append(filename)
             filenames.append(filename)
     print (filenames)
@@ -450,8 +422,6 @@ dend["color_list"]= color_list_n #updated branch color list is assigned to the o
 dend["leaves_color_list"]= leaves_color_list_n #updated leaves color list is assigned to the original dendrogram
 
 cl_dict={}
-#print (dend['ivl'])
-#print (dend["leaves_color_list"])
 
 for cls1, cls2 in enumerate(dend['leaves_color_list']):
     if cls2== 'lightgray':
