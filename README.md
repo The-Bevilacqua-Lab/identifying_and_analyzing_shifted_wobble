@@ -6,6 +6,7 @@ This pipeline will take the search output from the RCSB protein databank to iden
 ```sh
 pip install -r requirements.txt
 ```
+- For characterizing the 3D structure Dissecting the Spatial Structure of RNA (DSSR, version: v2.2.1-2021jan12) was used
 ## Folder structure
 
     identify_and_characterize_shifted_wobble
