@@ -75,6 +75,10 @@ This script will take the output from step 11 and identify the location of the w
 python step_12_stem_check.py 'results/data-from-step-11.csv' '/directory_with_all_DSSR_output/' '1' or '2'
 ```
 ### 13. step_13_non_WCF_check.py
+This script will identify non-Watson-Crick_Franklin interactions within 3.4 Å  of G(N7), G(O4), G(N1), G(N2), G(O4'), G(O2'), U(O4), U(O2), U(O4'), and (UO2') atoms. The script requires the CSV file generated in step 12 and an integer input to specify the register: enter '1' for the standard G•U wobble or '2' for the shifted G•U wobble.
+```sh
+python step_13_non_WCF_check.py 'results/data-from-step-12.csv' '1' or '2'
+```
 
 ### 14. step_14_assigning_consensus_1D_2D.ipynb
 
