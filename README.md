@@ -60,11 +60,20 @@ This script will identify representative structures for redundant wobble example
 python step_9_redundancy_check.py 'results/data-from-step-8.csv' '1' or '2'
 ```
 ### 10. step_10_analyze_map_model_cc.py
-
+This script will extract the correlation coefficient between the electron density map and modeled structure (map-model cc) for the nucleobases forming shifted wobbles, as well as the mean and median map-model cc for all residues within the chain containing the corresponding shifted wobble. This script will take the CSV file generated in step 9 and the directory containing the calculated map-model cc files (as .txt or .csv format) as input. 
+```sh
+python step_10_analyze_map_model_cc.py 'results/data-from-step-9.csv' '/directory_of_map_model_cc_files/'
+```
 ### 11. step_11_identifying_structural_clusters.py
-
+This script will identify structural clusters within the non-redundant dataset of the shifted wobbles. For that first, it will generate clipped motifs with the user-defined flanking sequence length which is one now. These motifs will be stored in a directory which must be specified as an input. The generated structures will be aligned with each other to generate a distance matrix. This distance matrix will then be used to perform a hierarchical clustering. Currently, the distance cut-off is 1.23 Å and requires at least 4 members within a group to be identified as a cluster. 
+```sh
+python step_11_identifying_structural_clusters.py 'results/data-from-step-10.csv' '/directory_to_store_clipped_structures/'
+```
 ### 12. step_12_stem_check.py
-
+This script will take the output from step 11 and identify the location of the wobbles in the secondary structure motifs. The inputs will be the CSV files from step 11, the directory where all the structures and DSSR output (generated in step 2) are stored, and an integer specifying either standard ('1') or shifted wobble ('2'). 
+```sh
+python step_12_stem_check.py 'results/data-from-step-11.csv' '/directory_with_all_DSSR_output/' '1' or '2'
+```
 ### 13. step_13_non_WCF_check.py
 
 ### 14. step_14_assigning_consensus_1D_2D.ipynb
