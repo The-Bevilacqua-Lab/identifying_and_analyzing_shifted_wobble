@@ -53,13 +53,19 @@ This script will check the hydrogen bond quality and filter out those with poor 
 python step_7_filter_and_quality_check.py 'results/data-from-step-6.csv' '1' or '2'
 ```
 ### 8. step_8_adjust_res_index.py
-This script takes the shifted residues csv along with three fasta files derived from step_1.8_get_fastas.py, representing the fastas from the pymol structures, pdb alignments, and a reference fasta with one representative sequence per RNA type. The ouput is the same shifted residues csv with additional columns for: ref_org, pdb_adj_res1, pdb_adj_res2, flank1, flank2, ref_pdb_chain, adj_res1, and adj_res2
+This script takes the data from step 7 and pulls fasta formatted sequences from pymol and the pdb server, as well as makes a reference fasta with one representative sequence per RNA type and organism.
 
 ```sh
-python step_8.1_get_fastas.py -i 'results/data-from-step-7.csv' -ft pymol -o pymol.fasta
-python step_8.1_get_fastas.py -i 'results/data-from-step-7.csv' -ft pdb -o pdb.fasta
-python step_8.1_get_fastas.py -i 'results/data-from-step-7.csv' -ft ref -pdb pdb.fasta -o reference.fasta
-python step_8_adjust_res_index.py -i 'results/data-from-step-7.csv' -py pymol.fasta -pdb pdb.fasta -ref reference.fasta -o 'results/data-from-step-8.csv
+python step_8_get_fastas.py -i 'results/data-from-step-7.csv' -ft pymol -o pymol.fasta
+python step_8_get_fastas.py -i 'results/data-from-step-7.csv' -ft pdb -o pdb.fasta
+python step_8_get_fastas.py -i 'results/data-from-step-7.csv' -ft ref -pdb pdb.fasta -o reference.fasta
+```
+
+### 9. step_9_adjust_res_index.py
+This script takes the shifted residues csv along with three fasta files derived from step_8_get_fastas.py. The ouput is the same shifted residues csv with additional columns for: ref_org, pdb_adj_res1, pdb_adj_res2, flank1, flank2, ref_pdb_chain, adj_res1, and adj_res2
+
+```sh
+python step_9_adjust_res_index.py -i 'results/data-from-step-7.csv' -py pymol.fasta -pdb pdb.fasta -ref reference.fasta -o 'results/data-from-step-9.csv
 ```
 
 ### 10. step_9_redundancy_check.py
