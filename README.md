@@ -53,7 +53,15 @@ This script will check the hydrogen bond quality and filter out those with poor 
 python step_7_filter_and_quality_check.py 'results/data-from-step-6.csv' '1' or '2'
 ```
 ### 8. step_8_adjust_res_index.py
-This script 
+This script takes the shifted residues csv along with three fasta files derived from step_1.8_get_fastas.py, representing the fastas from the pymol structures, pdb alignments, and a reference fasta with one representative sequence per RNA type. The ouput is the same shifted residues csv with additional columns for: ref_org, pdb_adj_res1, pdb_adj_res2, flank1, flank2, ref_pdb_chain, adj_res1, and adj_res2
+
+```sh
+python step_8.1_get_fastas.py -i 'results/data-from-step-7.csv' -ft pymol -o pymol.fasta
+python step_8.1_get_fastas.py -i 'results/data-from-step-7.csv' -ft pdb -o pdb.fasta
+python step_8.1_get_fastas.py -i 'results/data-from-step-7.csv' -ft ref -pdb pdb.fasta -o reference.fasta
+python step_8_adjust_res_index.py -i 'results/data-from-step-7.csv' -py pymol.fasta -pdb pdb.fasta -ref reference.fasta -o 'results/data-from-step-8.csv
+```
+
 ### 9. step_9_redundancy_check.py
 This script will identify representative structures for redundant wobble examples, where multiple wobble instances from the same location in the same RNA of the same organism are available. The script requires the CSV file generated in step 8 and an integer input to specify the register: enter '1' for the standard G•U wobble or '2' for the shifted G•U wobble.
 ```sh
