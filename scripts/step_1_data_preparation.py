@@ -83,7 +83,7 @@ D6= D5.copy()
 D6['Resolution_(Å)'] = pd.to_numeric(D5['Resolution_(Å)'], errors='coerce')
 
 #applying resolution cut-off
-D7= D6[(D6['Resolution_(Å)']<3.2) | (D6['Resolution_(Å)']==3.2) ]
+D7= D6[(D6['Resolution_(Å)']< float(R)) | (D6['Resolution_(Å)']== float(R)) ]
 D7.index = np.arange(0, len(D7))
 
 #D7 dataframe contain the PDB_IDs for the structures within user defined resolution cut-off

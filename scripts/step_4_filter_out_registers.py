@@ -253,12 +253,13 @@ def exclude_non_regs(d):
 
     return d2
 
-
+#read the csv file
 optparser = OptionParser()
 (options, args) = optparser.parse_args()
-cif_dir = args[0]
+csvfile = args[0]
+cif_dir = args[1]
 
-D1= pd.read_csv('data/all_GU_base_pairs.csv')
+D1= pd.read_csv(csvfile)
 
 D2= fix_PDB_ID(D1)
 

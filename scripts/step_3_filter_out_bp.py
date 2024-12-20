@@ -35,12 +35,13 @@ def fix_PDB_ID(df):
                     
     return (df)
 
-
+#read the csv file
 optparser = OptionParser()
 (options, args) = optparser.parse_args()
-cif_dir = args[0]
+csvfile = args[0]
+cif_dir = args[1]
 
-D1= pd.read_csv('data/structures_within_3.2_resolution.csv')
+D1= pd.read_csv(csvfile)
 print ('-----------------------------')
 print (D1.shape)
 D2= fix_PDB_ID(D1)

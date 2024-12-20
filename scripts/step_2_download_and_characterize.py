@@ -35,11 +35,13 @@ def fix_PDB_ID(df):
 
 #directory to store the cif files
 #make sure this directory contain the executible DSSR
+#read the csv file
 optparser = OptionParser()
 (options, args) = optparser.parse_args()
-cif_dir = args[0]
+csvfile = args[0]
+cif_dir = args[1]
 
-D1= pd.read_csv('structures_within_3.2_resolution.csv')
+D1= pd.read_csv(csvfile)
 D2= fix_PDB_ID(D1)
 
 #home directory where this script is stored
