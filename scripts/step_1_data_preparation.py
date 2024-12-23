@@ -1,5 +1,4 @@
 #importing required libraries
-import os
 import numpy as np
 import pandas as pd
 from optparse import OptionParser
@@ -43,8 +42,7 @@ d4 = pd.read_csv("data/rcsb_pdb_custom_report_68e1ca6d11520b83e299cb7193c01d8c_0
 d5 = pd.read_csv("data/rcsb_pdb_custom_report_68e1ca6d11520b83e299cb7193c01d8c_10001-12500.csv")
 d6 = pd.read_csv("data/rcsb_pdb_custom_report_68e1ca6d11520b83e299cb7193c01d8c_12501-13516.csv")
 
-#c
-# ombining all search output df into one
+# combining all search output df into one
 ds= [d1, d2, d3, d4, d5, d6]
 D= pd.concat(ds)
 D.index = np.arange(0, len(D))
@@ -79,7 +77,6 @@ D5.index = np.arange(0, len(D5))
 
 #converting all entries in 'Resolution_(Å)' to float
 D6= D5.copy()
-#D6['Resolution_(Å)']  = D5['Resolution_(Å)'] .astype(float)
 D6['Resolution_(Å)'] = pd.to_numeric(D5['Resolution_(Å)'], errors='coerce')
 
 #applying resolution cut-off
