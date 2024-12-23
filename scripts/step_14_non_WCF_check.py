@@ -203,16 +203,16 @@ def tert_intr(df, n):
                     bp_res_U_atoms.append(str(U_ID['N3'])+ '_'+ 'N3'+ '_'+ str(U_info["resnum"])+ '_'+ 'U')
                     bp_res_U_atoms.append(str(U_ID['O2'])+ '_'+ 'O2'+ '_'+ str(U_info["resnum"])+ '_'+ 'U')
 
-                elif n==2:
-                    #relevant atoms in G forming hydrogen bonds associated with the register of interest
-                    bp_res_G_atoms.append(str(G_ID['N1'])+ '_'+ 'N1'+ '_'+ str(G_info["resnum"])+ '_'+ 'G')
-                    bp_res_G_atoms.append(str(G_ID['N2'])+ '_'+ 'N2'+ '_'+ str(G_info["resnum"])+ '_'+ 'G')
+                #elif n==2:
+                #    #relevant atoms in G forming hydrogen bonds associated with the register of interest
+                #    bp_res_G_atoms.append(str(G_ID['N1'])+ '_'+ 'N1'+ '_'+ str(G_info["resnum"])+ '_'+ 'G')
+                #    bp_res_G_atoms.append(str(G_ID['N2'])+ '_'+ 'N2'+ '_'+ str(G_info["resnum"])+ '_'+ 'G')
 
                     #relevant atoms in U forming hydrogen bonds associated with the register of interest
-                    bp_res_U_atoms.append(str(U_ID['N3'])+ '_'+ 'N3'+ '_'+ str(U_info["resnum"])+ '_'+ 'U')
-                    bp_res_U_atoms.append(str(U_ID['O2'])+ '_'+ 'O2'+ '_'+ str(U_info["resnum"])+ '_'+ 'U')
+                #    bp_res_U_atoms.append(str(U_ID['N3'])+ '_'+ 'N3'+ '_'+ str(U_info["resnum"])+ '_'+ 'U')
+                #    bp_res_U_atoms.append(str(U_ID['O2'])+ '_'+ 'O2'+ '_'+ str(U_info["resnum"])+ '_'+ 'U')
 
-                elif n==3:
+                elif n==2:
                     #relevant atoms in G forming hydrogen bonds associated with the register of interest
                     bp_res_G_atoms.append(str(G_ID['N1'])+ '_'+ 'N1'+ '_'+ str(G_info["resnum"])+ '_'+ 'G')
                     bp_res_G_atoms.append(str(G_ID['N2'])+ '_'+ 'N2'+ '_'+ str(G_info["resnum"])+ '_'+ 'G')
