@@ -7,6 +7,7 @@ This pipeline will take the search output from the RCSB protein databank to iden
 pip install -r requirements.txt
 ```
 - For characterizing the 3D structure, Dissecting the Spatial Structure of RNA (DSSR, version: v2.2.1-2021jan12) was used
+- The Phenix software package (version: 1.21.1-5286) was used to compare electron density maps and modeled structures.  
 ## Folder structure
 
     identify_and_characterize_shifted_wobble
@@ -62,7 +63,7 @@ python step_8_get_fastas.py -i 'results/data-from-step-7.csv' -ft ref -pdb pdb.f
 ```
 
 ### 9. step_9_adjust_res_index.py
-This script takes the shifted residues csv along with three fasta files derived from step_8_get_fastas.py. The ouput is the same shifted residues csv with additional columns for: ref_org, pdb_adj_res1, pdb_adj_res2, flank1, flank2, ref_pdb_chain, adj_res1, and adj_res2
+This script takes the csv from step 7 along with three fasta files derived from step_8_get_fastas.py. The ouput is the same csv from step 7 with additional columns for: ref_org, pdb_adj_res1, pdb_adj_res2, flank1, flank2, ref_pdb_chain, adj_res1, and adj_res2
 
 ```sh
 python step_9_adjust_res_index.py -i 'results/data-from-step-7.csv' -py pymol.fasta -pdb pdb.fasta -ref reference.fasta -o 'results/data-from-step-9.csv
