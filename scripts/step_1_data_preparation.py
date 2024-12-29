@@ -35,12 +35,12 @@ optparser = OptionParser()
 R= float(args[0])
 
 #importing search data from RCSB-PDB
-d1 = pd.read_csv("data/rcsb_pdb_custom_report_68e1ca6d11520b83e299cb7193c01d8c_00001-02500.csv")
-d2 = pd.read_csv("data/rcsb_pdb_custom_report_68e1ca6d11520b83e299cb7193c01d8c_02501-05000.csv")
-d3 = pd.read_csv("data/rcsb_pdb_custom_report_68e1ca6d11520b83e299cb7193c01d8c_05001-07500.csv")
-d4 = pd.read_csv("data/rcsb_pdb_custom_report_68e1ca6d11520b83e299cb7193c01d8c_07501-10000.csv")
-d5 = pd.read_csv("data/rcsb_pdb_custom_report_68e1ca6d11520b83e299cb7193c01d8c_10001-12500.csv")
-d6 = pd.read_csv("data/rcsb_pdb_custom_report_68e1ca6d11520b83e299cb7193c01d8c_12501-13516.csv")
+d1 = pd.read_csv("../data/rcsb_pdb_custom_report_68e1ca6d11520b83e299cb7193c01d8c_00001-02500.csv")
+d2 = pd.read_csv("../data/rcsb_pdb_custom_report_68e1ca6d11520b83e299cb7193c01d8c_02501-05000.csv")
+d3 = pd.read_csv("../data/rcsb_pdb_custom_report_68e1ca6d11520b83e299cb7193c01d8c_05001-07500.csv")
+d4 = pd.read_csv("../data/rcsb_pdb_custom_report_68e1ca6d11520b83e299cb7193c01d8c_07501-10000.csv")
+d5 = pd.read_csv("../data/rcsb_pdb_custom_report_68e1ca6d11520b83e299cb7193c01d8c_10001-12500.csv")
+d6 = pd.read_csv("../data/rcsb_pdb_custom_report_68e1ca6d11520b83e299cb7193c01d8c_12501-13516.csv")
 
 # combining all search output df into one
 ds= [d1, d2, d3, d4, d5, d6]
