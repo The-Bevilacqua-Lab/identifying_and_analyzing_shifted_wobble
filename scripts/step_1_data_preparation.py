@@ -1,4 +1,5 @@
 #importing required libraries
+import os
 import numpy as np
 import pandas as pd
 from optparse import OptionParser
@@ -32,18 +33,23 @@ def fix_PDB_ID(df):
 
 optparser = OptionParser()
 (options, args) = optparser.parse_args()
-R= float(args[0])
+csv_dir = args[0]
+R= float(args[1])
 
+ds= []
 #importing search data from RCSB-PDB
-d1 = pd.read_csv("../data/rcsb_pdb_custom_report_68e1ca6d11520b83e299cb7193c01d8c_00001-02500.csv")
-d2 = pd.read_csv("../data/rcsb_pdb_custom_report_68e1ca6d11520b83e299cb7193c01d8c_02501-05000.csv")
-d3 = pd.read_csv("../data/rcsb_pdb_custom_report_68e1ca6d11520b83e299cb7193c01d8c_05001-07500.csv")
-d4 = pd.read_csv("../data/rcsb_pdb_custom_report_68e1ca6d11520b83e299cb7193c01d8c_07501-10000.csv")
-d5 = pd.read_csv("../data/rcsb_pdb_custom_report_68e1ca6d11520b83e299cb7193c01d8c_10001-12500.csv")
-d6 = pd.read_csv("../data/rcsb_pdb_custom_report_68e1ca6d11520b83e299cb7193c01d8c_12501-13516.csv")
+home= os.getcwd()
+os.chdir(csv_dir)
+for filename in os.listdir(csv_dir):
+    if filename.endswith('.csv'):
+        if filename.startswith('rcsb_pdb_custom_report_'):
+            d= pd.read_csv(filename)
+            ds.append(d)
+
+os.chdir(home) 
+
 
 # combining all search output df into one
-ds= [d1, d2, d3, d4, d5, d6]
 D= pd.concat(ds)
 D.index = np.arange(0, len(D))
 
