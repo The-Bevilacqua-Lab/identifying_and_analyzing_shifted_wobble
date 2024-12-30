@@ -19,9 +19,9 @@ pip install -r requirements.txt
       ├── LICENSE
 ## Instructions for each scripts
 ### 1. step_1_data_preparation.py
-This script will read the CSV files (custom search results from [RCSB Protein Data Bank](https://www.rcsb.org/)) stored in the 'data' folder  and output the cleaner version of the result within user-defined resolution cut-off. 
+This script will read the CSV files (custom search results from [RCSB Protein Data Bank](https://www.rcsb.org/)) stored in the directory specified by the user and output the cleaner version of the result within user-defined resolution cut-off. Please make sure that there are no extra CSV files with a filename starting with 'rcsb_pdb_custom_report_' except the relevant CSV files. 
 ```sh
-python step_1_data_preparation.py '3.2'
+python step_1_data_preparation.py '/directory_for_custom_RCSB_search_results' '3.2'
 ```
 ### 2. step_2_download_and_characterize.py
 This script downloads the structures and characterizes them using DSSR (version v2.2.1-2021jan12 is required for this pipeline). You need to specify the directory where the CSV file (which will be stored in results by default) generated from step_1_data_preparation.py is stored and the directory where the downloaded structure files and JSON output files from DSSR characterization will be saved.
