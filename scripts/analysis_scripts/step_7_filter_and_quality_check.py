@@ -229,8 +229,8 @@ D4= clean_data(D3)
 
 if R==1:
     #for standard wobble
-    D4.to_csv('../results/all_red_good_standard_wobble.csv', index= False)
+    D4.to_csv('../../results/all_red_good_standard_wobble.csv', index= False)
 elif R==2:
     #for shifted wobble
-    D4.to_csv('../results/all_red_good_shifted_wobble.csv', index= False)
+    D4.to_csv('../../results/all_red_good_shifted_wobble.csv', index= False)
 

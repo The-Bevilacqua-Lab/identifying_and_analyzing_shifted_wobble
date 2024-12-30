@@ -284,4 +284,4 @@ D8= D7.drop(drp_cols, axis=1) #drop hbond columns
 #D8.to_csv('data/standard_GU_without_hbonds.csv', index=False)
 
 #D6.to_csv('results/shifted_GU_with_hbonds.csv', index= False)
-D8.to_csv('results/shifted_GU_without_hbonds.csv', index=False)
+D8.to_csv('../../results/shifted_GU_without_hbonds.csv', index=False)

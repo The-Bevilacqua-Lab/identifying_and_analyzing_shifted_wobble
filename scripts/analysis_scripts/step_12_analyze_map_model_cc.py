@@ -239,4 +239,4 @@ for i, j in enumerate(sw_df1['PDB_ID']):
 
 os.chdir(home)
 
-D2.to_csv('../results/nr_shifted_wobble_map_model_cc.csv', index= False)
+D2.to_csv('../../results/nr_shifted_wobble_map_model_cc.csv', index= False)

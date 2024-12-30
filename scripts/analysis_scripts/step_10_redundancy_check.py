@@ -556,7 +556,7 @@ D3= rem_red(D2)
 #store the finalized data as csv
 if R==1:
     #for standard wobble
-    D3.to_csv('../results/all_standard_wobble_redundancy_checked.csv', index= False)
+    D3.to_csv('../../results/all_standard_wobble_redundancy_checked.csv', index= False)
 elif R==2:
     #for shifted wobble
-    D3.to_csv('../results/all_shifted_wobble_redundancy_checked.csv', index= False)
+    D3.to_csv('../../results/all_shifted_wobble_redundancy_checked.csv', index= False)

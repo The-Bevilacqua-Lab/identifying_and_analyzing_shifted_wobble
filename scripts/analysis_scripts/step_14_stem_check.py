@@ -196,7 +196,7 @@ D1['location_in_secondary_structure'] = D1['bp_ID'].apply(get_key)
 
 if R==1:
     #for standard wobble
-    D1.to_csv('../results/all_standard_wobble_2D_loc.csv', index= False)
+    D1.to_csv('../../results/all_standard_wobble_2D_loc.csv', index= False)
 elif R==2:
     #for shifted wobble
-    D1.to_csv('../results/all_shifted_wobble_2D_loc.csv', index= False)
+    D1.to_csv('../../results/all_shifted_wobble_2D_loc.csv', index= False)
