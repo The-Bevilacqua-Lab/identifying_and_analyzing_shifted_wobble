@@ -217,7 +217,7 @@ def generate_str(df, tar_dir, fln):
         p= nr_df['PDB_ID'][k]
         c= nr_df['chain_ID'][k]
         s= nr_df['seg_ID'][k]
-        resn_list_motif= [res1_index-fln, res1_index, res1_index+fln, res2_index-1, res2_index, res2_index+1]
+        resn_list_motif= [res1_index-fln, res1_index, res1_index+fln, res2_index-fln, res2_index, res2_index+fln]
         resn_list_motif.sort()
         filename= l
         cls_str= clip(p, c, s, resn_list_motif, '', 'N', 'Y', filename)
@@ -375,7 +375,7 @@ generate_str(D1, tar_dir, fln)
 #perform all-against-all alignment
 D2= align_all_against_all(tar_dir)
 
-D2.to_csv('data/all_against_all_RMSD_nr_shifted_wobbles.csv', index= False)
+D2.to_csv('results/all_against_all_RMSD_nr_shifted_wobbles.csv', index= False)
 
 sw_names= [j.rstrip('.cif').replace('-', '_') for i,j in enumerate(list(D2.columns)[1:])]
 
