@@ -74,25 +74,30 @@ This script will identify representative structures from redundant wobble exampl
 ```sh
 python step_10_redundancy_check.py 'results/data-from-step-9.csv' '1' or '2'
 ```
-### 11. step_11_analyze_map_model_cc.py
-This script will extract the correlation coefficient between the electron density map and modeled structure (map-model cc) for the nucleobases forming shifted wobbles, as well as the mean and median map-model cc for all residues within the chain containing the corresponding shifted wobble. This script will take the CSV file generated in step 10 and the directory containing the calculated map-model cc files (as .txt or .csv format) as input. 
+### 11. step_11_prepare_structure_files.py
+This script prepares unique structural files for the non-redundant wobble dataset, where each structure may contain multiple standard or shifted wobbles. As part of the preparation process, all modified residues are removed to ensure compatibility with Phenix. This allows Phenix to utilize the structure and the raw electron density map file to calculate map-model correlation coefficients. The inputs for this script are the CSV file generated in Step 10 and the directory designated for storing the clipped structure files.
 ```sh
-python step_11_analyze_map_model_cc.py 'results/data-from-step-10.csv' '/directory_of_map_model_cc_files/'
+python step_11_prepare_structure_files.py 'results/data-from-step-11.csv' '/directory_for_clipped_structures/'
 ```
-### 12. step_12_identifying_structural_clusters.py
+### 12. step_12_analyze_map_model_cc.py
+Before executing this script, files containing the correlation coefficient between the electron density maps and modeled structures (map-model cc) must be generated. This involves comparing the clipped structures created in Step 11 with the corresponding electron density files obtained from the RCSB Protein Data Bank (https://www.rcsb.org/) using the Phenix software package (version: 1.21.1-5286). This script will extract the map-model cc for the nucleobases forming shifted wobbles, as well as the mean and median map-model cc for all residues within the chain containing the corresponding shifted wobble. This script will take the CSV file generated in step 10 and the directory containing the calculated map-model cc files (as .txt or .csv format) as input. 
+```sh
+python step_12_analyze_map_model_cc.py 'results/data-from-step-10.csv' '/directory_of_map_model_cc_files/'
+```
+### 13. step_13_identifying_structural_clusters.py
 This script will identify structural clusters within the non-redundant dataset of the shifted wobbles. For that first, it will generate clipped motifs with the user-defined flanking sequence length which is currently one. These motifs will be stored in a directory which must be specified as an input. The generated structures will be aligned with each other to generate a distance matrix. This distance matrix will then be used to perform a hierarchical clustering. Currently, the distance cut-off is 1.23 Å and requires at least 4 members within a group to be identified as a cluster. 
 ```sh
-python step_12_identifying_structural_clusters.py 'results/data-from-step-11.csv' '/directory_to_store_clipped_structures/'
+python step_13_identifying_structural_clusters.py 'results/data-from-step-12.csv' '/directory_for_motifs/'
 ```
-### 13. step_13_stem_check.py
-This script will take the output from step 12 and identify the location of the wobbles in the secondary structure motifs. The other inputs will be the directory where all the structures and DSSR output (generated in step 2) are stored, and an integer specifying either standard ('1') or shifted wobble ('2'). 
+### 14. step_14_stem_check.py
+This script will take the output from step 13 and identify the location of the wobbles in the secondary structure motifs. The other inputs will be the directory where all the structures and DSSR output (generated in step 2) are stored, and an integer specifying either standard ('1') or shifted wobble ('2'). 
 ```sh
-python step_13_stem_check.py 'results/data-from-step-12.csv' '/directory_with_all_DSSR_output/' '1' or '2'
+python step_14_stem_check.py 'results/data-from-step-13.csv' '/directory_with_all_DSSR_output/' '1' or '2'
 ```
-### 14. step_14_non_WCF_check.py
-This script will identify non-Watson-Crick-Franklin interactions within 3.4 Å  of G(N7), G(O6), G(N1), G(N2), G(N3), G(O4'), G(O2'), U(O4), U(N3), U(O2), U(O4'), and U(O2') atoms. The script requires the CSV file generated in step 13 and an integer input to specify the register: enter '1' for the standard G•U wobble or '2' for the shifted G•U wobble.
+### 15. step_15_non_WCF_check.py
+This script will identify non-Watson-Crick-Franklin interactions within 3.4 Å  of G(N7), G(O6), G(N1), G(N2), G(N3), G(O4'), G(O2'), U(O4), U(N3), U(O2), U(O4'), and U(O2') atoms. The script requires the CSV file generated in step 14 and an integer input to specify the register: enter '1' for the standard G•U wobble or '2' for the shifted G•U wobble.
 ```sh
-python step_14_non_WCF_check.py 'results/data-from-step-13.csv' '1' or '2'
+python step_15_non_WCF_check.py 'results/data-from-step-14.csv' '1' or '2'
 ```
 
 
