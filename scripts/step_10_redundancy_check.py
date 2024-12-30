@@ -2,16 +2,10 @@ import requests
 import os
 from subprocess import call
 import pandas as pd
-import csv
-import json
-import glob
-import subprocess
 import numpy as np
 from Bio.PDB import MMCIFParser, Superimposer, PDBIO
 from Bio.PDB.Structure import Structure
-import Bio.PDB
 from Bio.PDB.mmcifio import MMCIFIO
-import shutil
 from optparse import OptionParser
 
 
