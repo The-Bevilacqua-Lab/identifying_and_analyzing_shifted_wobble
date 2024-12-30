@@ -4,7 +4,6 @@ import pandas as pd
 import requests
 import numpy as np
 from Bio.PDB import MMCIFParser, Superimposer, PDBIO
-from Bio.PDB.QCPSuperimposer import QCPSuperimposer
 from optparse import OptionParser
 from scipy.spatial.distance import squareform
 from scipy.cluster.hierarchy import linkage, dendrogram, fcluster
@@ -375,7 +374,7 @@ generate_str(D1, tar_dir, fln)
 #perform all-against-all alignment
 D2= align_all_against_all(tar_dir)
 
-D2.to_csv('results/all_against_all_RMSD_nr_shifted_wobbles.csv', index= False)
+D2.to_csv('../results/all_against_all_RMSD_nr_shifted_wobbles.csv', index= False)
 
 sw_names= [j.rstrip('.cif').replace('-', '_') for i,j in enumerate(list(D2.columns)[1:])]
 

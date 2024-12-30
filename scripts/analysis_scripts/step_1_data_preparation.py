@@ -91,4 +91,4 @@ D7.index = np.arange(0, len(D7))
 
 #D7 dataframe contain the PDB_IDs for the structures within user defined resolution cut-off
 #this dataframe will be used in the next step to download and characterize the structures by DSSR
-D7.to_csv('../results/structures_within_'+ str(R)+ '_resolution.csv', index= False)
+D7.to_csv('../../results/structures_within_'+ str(R)+ '_resolution.csv', index= False)

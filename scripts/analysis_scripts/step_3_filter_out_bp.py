@@ -98,4 +98,4 @@ os.chdir(home)
 #print (all_bps)
 #print (all_GUs)
 
-all_GUs.to_csv('results/all_GU_base_pairs.csv', index= False)
+all_GUs.to_csv('../../results/all_GU_base_pairs.csv', index= False)
