@@ -13,7 +13,9 @@ pip install -r requirements.txt
     identify_and_characterize_shifted_wobble
       ├── data                                                 #Search output from RCSB protein data bank
       ├── results                                              #Output files from each python script
-      ├── scripts                                              #All python scripts and jupyter notebooks
+      ├── scripts                                              
+          ├── analysis_scripts                                 #All python scripts and jupyter notebooks to analyze and extract structural features
+          ├── plot_scripts                                     #All python scripts and jupyter notebooks to visualize the outputs 
       ├── requirements.txt                                     #Required python packages and libraries
       ├── README.md                                            #This file
       ├── LICENSE
