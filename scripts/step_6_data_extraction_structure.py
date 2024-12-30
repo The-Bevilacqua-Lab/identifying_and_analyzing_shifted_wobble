@@ -158,11 +158,8 @@ def get_info_structure(df, n):
     hm_dr= os.getcwd() #home directory where this script and the df is stored
     
     #adding empty columns which will be polulated with corresponding bond angles and distances
-    #notes on June 13, 2024
-    #add 9 distance columns
     WCF_G= ['N1', 'N2', 'O6']
     WCF_U= ['O2', 'N3', 'O4']
-    #new lines from June 13, 2024 ends here
 
     ##df['b0_dis']= ''
     ##df['b0_dih']= ''
@@ -191,8 +188,6 @@ def get_info_structure(df, n):
     
     status_count=0
     for p1 in D:
-        #fname= p1+'.cif'
-        #cmd.load(fname, fname) #corresponding pdb is loaded
         cmd.fetch(p1) #fetching the cif files directly from RCSB, no need to download or save in local directory
         cmd.remove('hydrogen') #all hydrogen atoms will be excluded
         print (p1)
@@ -376,7 +371,6 @@ D2= fix_PDB_ID(D1)
 
 D3= get_info_structure(D2, R)
 
-#store the finalized data as csv
 #store the finalized data as csv
 if R==1:
     #for standard wobble

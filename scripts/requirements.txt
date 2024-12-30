@@ -1,7 +1,22 @@
+beautifulsoup4==4.12.3
 biopython==1.84
-numpy==2.2.1
+certifi==2024.12.14
+charset-normalizer==3.4.1
+idna==3.10
+numpy @ file:///Users/runner/miniforge3/conda-bld/numpy_1734904304189/work/dist/numpy-2.2.1-cp311-cp311-macosx_11_0_arm64.whl#sha256=5aa04d2b02f72cb213d9290086a4764aded6ab08b8ab8c97447069620c9759fc
+packaging @ file:///home/conda/feedstock_root/build_artifacts/packaging_1733203243479/work
 pandas==2.2.3
+ply @ file:///home/conda/feedstock_root/build_artifacts/ply_1733239724146/work
+Pmw @ file:///Users/runner/miniforge3/conda-bld/pmw_1695847193307/work
+pymol==3.0.0
+PyQt5-sip==12.12.2
 python-dateutil==2.9.0.post0
 pytz==2024.2
+requests==2.32.3
+sip @ file:///Users/runner/miniforge3/conda-bld/sip_1727796586741/work
 six==1.17.0
+soupsieve==2.6
+toml @ file:///home/conda/feedstock_root/build_artifacts/toml_1734091811753/work
+tomli @ file:///home/conda/feedstock_root/build_artifacts/tomli_1733256695513/work
 tzdata==2024.2
+urllib3==2.3.0
