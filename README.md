@@ -12,14 +12,14 @@ pip install -r requirements.txt
 
     identify_and_characterize_shifted_wobble
       ├── data                                   #Search output from RCSB protein data bank
-      ├── results                                #Output files from each python script
+      ├── results                                #Output files from each Python script
       ├── scripts                                              
-          ├── analysis_scripts                   #All python scripts and jupyter notebooks to analyze and extract structural features
-          ├── plot_scripts                       #All python scripts and jupyter notebooks to visualize the outputs 
-      ├── requirements.txt                       #Required python packages and libraries
+          ├── analysis_scripts                   #All Python scripts and Jupyter notebooks to extract and analyze structural features
+          ├── plot_scripts                       #All Python scripts and Jupyter notebooks to visualize the outputs 
+      ├── requirements.txt                       #Required Python packages and libraries
       ├── README.md                              #This file
       ├── LICENSE
-## Instructions for each scripts
+## Instructions for each script
 ### 1. step_1_data_preparation.py
 This script will read the CSV files (custom search results from [RCSB Protein Data Bank](https://www.rcsb.org/)) stored in the directory specified by the user and output the cleaner version of the result within user-defined resolution cut-off. Please make sure that there are no extra CSV files with a filename starting with 'rcsb_pdb_custom_report_' except the relevant CSV files. 
 ```sh
