@@ -181,13 +181,16 @@ home= os.getcwd()
 os.chdir(cc_dir)
 
 stat_count=0
-for i, j in enumerate(sw_df1['PDB_ID']):
+for i, j in enumerate(sw_df1['bp_ID']):
+    #if j == '6XU8':
+    #    print ('THIS IS IT _______________________________________________________-')
     stat_count +=1
     print ('working here----> '+str(stat_count))
     print (j)
-    t_fname= j+ ".txt"
-    l_fname= j+ ".log"
-    c_fname= j+ ".csv"
+    p= sw_df1['PDB_ID'][i]
+    t_fname= p+ ".txt"
+    l_fname= p+ ".log"
+    c_fname= p+ ".csv"
     if os.path.isfile(t_fname):
         print ('#################################')
         print (sw_df1['chain_ID'][i])
@@ -204,7 +207,7 @@ for i, j in enumerate(sw_df1['PDB_ID']):
         df1= cc_csv(c_fname, sw_df1['chain_ID'][i])
 
     
-    print (df1.shape)
+    #print (df1.shape)
     #filtering out the chain of interest
     #df2= df1[df1['chain_ID']== sw_df1['chain_ID'][i]]
     #df2.index= np.arange(0, len(df2))
@@ -222,6 +225,8 @@ for i, j in enumerate(sw_df1['PDB_ID']):
 
     cc_G= df1[df1['residue_index']== res_index_G]['residue_map_model_CC'].to_list()[0]
     cc_U= df1[df1['residue_index']== res_index_U]['residue_map_model_CC'].to_list()[0]
+    print (cc_G)
+    print (cc_U)
 
     percentile_G = percentileofscore(df1['residue_map_model_CC'], cc_G)
     percentile_U = percentileofscore(df1['residue_map_model_CC'], cc_U)
