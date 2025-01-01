@@ -358,6 +358,8 @@ def align_all_against_all(dr):
     os.chdir(home)
     return t1
 
+home_dir= os.getcwd()
+print (home_dir)
 #read the data
 optparser = OptionParser()
 (options, args) = optparser.parse_args()
@@ -374,7 +376,7 @@ generate_str(D1, tar_dir, fln)
 #perform all-against-all alignment
 D2= align_all_against_all(tar_dir)
 
-D2.to_csv('../results/all_against_all_RMSD_nr_shifted_wobbles.csv', index= False)
+D2.to_csv('../../results/all_against_all_RMSD_nr_shifted_wobbles.csv', index= False)
 
 sw_names= [j.rstrip('.cif').replace('-', '_') for i,j in enumerate(list(D2.columns)[1:])]
 
@@ -436,6 +438,7 @@ cl_dict= {f"{k[:1]}{i+1}": v for i, (k, v) in enumerate(cl_dict.items()) if k !=
 print ('-------------------------------------------------')
 print (cl_dict)
 
+os.chdir(home_dir)
 def get_key(value):
     for key, values in cl_dict.items():
         if value in values:

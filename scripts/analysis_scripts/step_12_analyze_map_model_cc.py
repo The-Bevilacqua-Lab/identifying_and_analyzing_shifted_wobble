@@ -231,16 +231,16 @@ for i, j in enumerate(sw_df1['bp_ID']):
     percentile_G = percentileofscore(df1['residue_map_model_CC'], cc_G)
     percentile_U = percentileofscore(df1['residue_map_model_CC'], cc_U)
 
-    D2.loc[((D2['PDB_ID']== j)&(D2['chain_ID']== sw_df1['chain_ID'][i])), 'Median_map_model_cc'] = cc_median
-    D2.loc[((D2['PDB_ID']== j)&(D2['chain_ID']== sw_df1['chain_ID'][i])), 'Mean_map_model_cc'] = cc_mean
+    D2.loc[((D2['bp_ID']== j)&(D2['chain_ID']== sw_df1['chain_ID'][i])), 'Median_map_model_cc'] = cc_median
+    D2.loc[((D2['bp_ID']== j)&(D2['chain_ID']== sw_df1['chain_ID'][i])), 'Mean_map_model_cc'] = cc_mean
 
-    D2.loc[((D2['PDB_ID']== j)&(D2['chain_ID']== sw_df1['chain_ID'][i])), 'Raw_map_model_cc_for_the_G'] = cc_G
-    D2.loc[((D2['PDB_ID']== j)&(D2['chain_ID']== sw_df1['chain_ID'][i])), 'Normalized_map_model_cc_for_the_G'] = round(cc_G/cc_mean, 2)
-    D2.loc[((D2['PDB_ID']== j)&(D2['chain_ID']== sw_df1['chain_ID'][i])), 'Percentile_cc_for_the_G'] = round(percentile_G, 2)
+    D2.loc[((D2['bp_ID']== j)&(D2['chain_ID']== sw_df1['chain_ID'][i])), 'Raw_map_model_cc_for_the_G'] = cc_G
+    D2.loc[((D2['bp_ID']== j)&(D2['chain_ID']== sw_df1['chain_ID'][i])), 'Normalized_map_model_cc_for_the_G'] = round(cc_G/cc_mean, 2)
+    D2.loc[((D2['bp_ID']== j)&(D2['chain_ID']== sw_df1['chain_ID'][i])), 'Percentile_cc_for_the_G'] = round(percentile_G, 2)
 
-    D2.loc[((D2['PDB_ID']== j)&(D2['chain_ID']== sw_df1['chain_ID'][i])), 'Raw_map_model_cc_for_the_U'] = cc_U
-    D2.loc[((D2['PDB_ID']== j)&(D2['chain_ID']== sw_df1['chain_ID'][i])), 'Normalized_map_model_cc_for_the_U'] = round(cc_U/cc_mean, 2)
-    D2.loc[((D2['PDB_ID']== j)&(D2['chain_ID']== sw_df1['chain_ID'][i])), 'Percentile_cc_for_the_U'] = round(percentile_U, 2)
+    D2.loc[((D2['bp_ID']== j)&(D2['chain_ID']== sw_df1['chain_ID'][i])), 'Raw_map_model_cc_for_the_U'] = cc_U
+    D2.loc[((D2['bp_ID']== j)&(D2['chain_ID']== sw_df1['chain_ID'][i])), 'Normalized_map_model_cc_for_the_U'] = round(cc_U/cc_mean, 2)
+    D2.loc[((D2['bp_ID']== j)&(D2['chain_ID']== sw_df1['chain_ID'][i])), 'Percentile_cc_for_the_U'] = round(percentile_U, 2)
 
 os.chdir(home)
 
