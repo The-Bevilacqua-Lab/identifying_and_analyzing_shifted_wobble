@@ -1,11 +1,16 @@
 # Identifying and analyzing shifted wobble
 This pipeline will take the search output from the RCSB protein databank to identify and characterize different orientations of wobbles. 
 ## Setup instructions
-- Install Python >= 3.8
+- Install Python >= 3.11
+- First install pymol by running the following line in terminal
+```sh
+conda install conda-forge::pymol-open-source
+```
 - Install required libraries:
 ```sh
 pip install -r requirements.txt
 ```
+- Detailed instructions for creating the environments can be found in the env_instructions.txt file
 - For characterizing the 3D structure, Dissecting the Spatial Structure of RNA (DSSR, version: v2.2.1-2021jan12) was used
 - The Phenix software package (version: 1.21.1-5286) was used to compare electron density maps and modeled structures.  
 ## Folder structure
@@ -17,6 +22,7 @@ pip install -r requirements.txt
           ├── analysis_scripts                   #All Python scripts and Jupyter notebooks to extract and analyze structural features
           ├── plot_scripts                       #All Python scripts and Jupyter notebooks to visualize the outputs 
       ├── requirements.txt                       #Required Python packages and libraries
+      ├── env_instructions.txt                   #Instructions for creating a new environment for this workflow
       ├── README.md                              #This file
       ├── LICENSE
 ## Instructions for each script
