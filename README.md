@@ -2,7 +2,7 @@
 This pipeline will take the search output from the RCSB protein databank to identify and characterize different orientations of wobbles. 
 ## Setup instructions
 - Install Python >= 3.11
-- First install pymol by running the following line in terminal
+- Install PyMOL by running the following line in terminal
 ```sh
 conda install conda-forge::pymol-open-source
 ```
