@@ -20,8 +20,8 @@ pip install -r requirements.txt
       ├── data                                   #Search output from RCSB protein data bank
       ├── results                                #Output files from each Python script
       ├── scripts                                              
-          ├── analysis_scripts                   #All Python scripts and Jupyter notebooks to extract and analyze structural features
-          ├── plot_scripts                       #All Python scripts and Jupyter notebooks to visualize the outputs 
+          ├── analysis_scripts                   #All Python scripts to extract and analyze structural features
+          ├── plot_scripts                       #All Jupyter notebooks to visualize the outputs 
       ├── requirements.txt                       #Required Python packages and libraries
       ├── env_instructions.rtf                   #Instructions for creating a new environment for this workflow
       ├── README.md                              #This file
