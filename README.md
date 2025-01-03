@@ -1,10 +1,11 @@
 # Identifying and analyzing shifted wobble
 This pipeline will take the search output from the RCSB protein databank to identify and characterize different orientations of wobbles. 
 ## Setup instructions
+- Install [Miniconda](https://docs.anaconda.com/miniconda/install/), and create a new environment
 - Install Python >= 3.11
 - Install PyMOL by running the following line in terminal
 ```sh
-conda install conda-forge::pymol-open-source
+conda install conda-forge::pymol-open-source=3.0.0
 ```
 - Install required libraries:
 ```sh
