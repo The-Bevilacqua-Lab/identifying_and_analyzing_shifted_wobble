@@ -38,8 +38,12 @@ def fix_PDB_ID(df):
 #read the csv file
 optparser = OptionParser()
 (options, args) = optparser.parse_args()
-csvfile = args[0]
-cif_dir = args[1]
+csvfile = args[0] #csv file with the list of PDB IDs
+cif_dir = args[1] #directory where json files from DSSR characterization is stored
+bp= args[2] #base pair of interest, order and case do not matter, 'AU', 'Ua', 'au', and 'uA' all indicates the same base pair
+
+bp1= bp.upper()
+
 
 D1= pd.read_csv(csvfile)
 print ('-----------------------------')
@@ -61,7 +65,7 @@ print (pdb_info)
 #STEP 2
 #this is the dataframe which will store all base pairs within all unique structure files
 all_bps = pd.DataFrame(columns = ['PDB_ID', 'Experiment', 'Resolution', 'nt1', 'nt2', 'Base_pair','Name', 'Saenger', 'LW', 'DSSR'])
-all_GUs = pd.DataFrame(columns = ['PDB_ID', 'Experiment', 'Resolution', 'nt1', 'nt2', 'Base_pair','Name', 'Saenger', 'LW', 'DSSR'])
+all_tar_bps = pd.DataFrame(columns = ['PDB_ID', 'Experiment', 'Resolution', 'nt1', 'nt2', 'Base_pair','Name', 'Saenger', 'LW', 'DSSR']) #all targeted or interested bps
 
 #STEP 3
 #we are changing the directory to cifs to open corresponding json files
@@ -89,8 +93,8 @@ for ind, PID in enumerate(D2['PDB_ID']):
                 #running the next line can take very long time (weeks or months depending on the number of unique PDB_IDs)    
                 all_bps.loc[len(all_bps)] = [j, pdb_info[j][0], pdb_info[j][1], bp_list['nt1'][x1], bp_list['nt2'][x1], bp_list['bp'][x1], bp_list['name'][x1], bp_list['Saenger'][x1], bp_list['LW'][x1], bp_list['DSSR'][x1]]
                 
-                if x2== 'G-U' or x2=='U-G': #this can be spacify as a variable before this for loop
-                    all_GUs.loc[len(all_GUs)] = [j, pdb_info[j][0], pdb_info[j][1], bp_list['nt1'][x1], bp_list['nt2'][x1], bp_list['bp'][x1], bp_list['name'][x1], bp_list['Saenger'][x1], bp_list['LW'][x1], bp_list['DSSR'][x1]]
+                if x2== bp1[0]+'-'+bp1[1] or x2== bp1[1]+'-'+bp1[0]: #this can be spacify as a variable before this for loop
+                    all_tar_bps.loc[len(all_tar_bps)] = [j, pdb_info[j][0], pdb_info[j][1], bp_list['nt1'][x1], bp_list['nt2'][x1], bp_list['bp'][x1], bp_list['name'][x1], bp_list['Saenger'][x1], bp_list['LW'][x1], bp_list['DSSR'][x1]]
   
                     
 os.chdir(home)
@@ -98,4 +102,4 @@ os.chdir(home)
 #print (all_bps)
 #print (all_GUs)
 
-all_GUs.to_csv('../../results/all_GU_base_pairs.csv', index= False)
+all_tar_bps.to_csv('../../results/all_'+ bp1+ '_base_pairs.csv', index= False)
