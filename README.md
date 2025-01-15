@@ -38,12 +38,12 @@ This script downloads the structures and characterizes them using DSSR (version 
 python step_2_download_and_characterize.py 'results/data.csv' '/directory_for_structures/'
 ```
 ### 3. step_3_filter_out_bp.py
-This script filters out all the base pairs of interest within the structures downloaded and characterized in step 2. For this, it will be all G-U base pairs. To run the script you need the same CSV file used in step 2 and the directory of the structure and JSON output files. The output will be stored in the 'result' folder. 
+This script filters out all the base pairs of interest within the structures downloaded and characterized in step 2. To run the script you need the same CSV file used in step 2, the directory of the structure and JSON output files, and the base pair of interest (order and case do not matter, 'AU', 'Ua', 'au', and 'uA' all indicates the same base pair). The output will be stored in the 'result' folder. 
 ```sh
-python step_3_filter_out_bp.py 'results/data.csv' '/directory_for_structures/'
+python step_3_filter_out_bp.py 'results/data.csv' '/directory_for_structures/' 'GU'
 ```
 ### 4. step_4_filter_out_registers.py
-This script will identify the different registers for G-U wobbles. However, if the user wants to identify registers from other base pairs, the required hydrogen bonds can be specified in lines #186 and 187 of the current version of the script. To run this script you need the CSV file generated in the previous step (step_3_filter_out_bp.py) and the directory of the structure and JSON files. 
+This script will identify the different registers for a base of interest based on the hydrogen bond required to form that pair. To run this script you need the CSV file generated in the previous step (step_3_filter_out_bp.py) and the directory of the structure and JSON files. The script will ask for the hydrogen bond. For standard and shifted wobble, you can write 'G.O6-U.N3,G.N1-U.O2' and 'G.N1-U.O4,G.N2-U.N3', respectively. Do not add any quotation mark to specify the hydrogen bonds. There should not be any space in between the hydrogen bonds, and multiple hydrogen bonds should only be separated by ','.
 ```sh
 python step_4_filter_out_registers.py 'results/data-from-step-3.csv' '/directory_for_structures/'
 ```
