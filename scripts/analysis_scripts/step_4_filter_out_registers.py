@@ -9,7 +9,6 @@ from optparse import OptionParser
 
 #required functions
 #fixing '5E54' becoming '5.00E+54' issue
-#fixing '5E54' becoming '5.00E+54' issue
 def fix_PDB_ID(df):
     for i, j in enumerate(df['PDB_ID']):
         print (j)
@@ -42,7 +41,6 @@ def fix_PDB_ID(df):
 #of hydrogen bonds which are forming A-U base pairs
 
 def pdb_hbond_dict(dir_j, test): 
-    
     dir_w= os.getcwd()
     #this function will create a dictionary where:
     #keys are the PDB_ID
@@ -123,21 +121,12 @@ def pdb_hbond_dict(dir_j, test):
         hb_list['bp_res']= hb_list['atom1_id'].str.split('@',expand = True)[1]+'-' \
         +hb_list['atom2_id'].str.split('@',expand = True)[1]
         
-        #Below we are adding one column 'bp_atom', this column will help to sort out different registers
-        #notation for this column: G.N2-U.O4
-        #we only need this column for G-U or U-G base pairs 
-        #because we are not finding different registers from A-U, U-A, G-C, and C-G
-        if test['Base_pair'][1] == 'A-C' or 'C-A':
-            print ('#################################################')
-            #print ((hb_list['atom1_id']))
-            #print ((hb_list['atom1_id'].str.split('@', expand = True)[1].str.split('.', expand = True))[1][0])
-            #print ((hb_list['atom1_id'].str.split('@', expand = True))[1])
-            hb_list['bp_atom'] = hb_list['res_ID_res1']+'.'+hb_list['atom_ID_res1']+'-'+hb_list['res_ID_res2']+'.'+hb_list['atom_ID_res2']
+        hb_list['bp_atom'] = hb_list['res_ID_res1']+'.'+hb_list['atom_ID_res1']+'-'+hb_list['res_ID_res2']+'.'+hb_list['atom_ID_res2']
         
         
         #below is the list which contains all the bps of the corresponding PDB_ID
         bps= list(pdb_bp[j]['bp_res']) 
-        ##print (bps)
+
         
         #below we are only filtering out the bp_list by including only the hbonds involving the base pairs of interest
         hb_list_n = hb_list[hb_list['bp_res'].isin(bps)]
@@ -174,56 +163,41 @@ def pdb_hbond_dict(dir_j, test):
     os.chdir(dir_w)
     return pdb_hbonds
 
-#take the output from pdb_hbond dictionary and filter out different registers
-#hbonds for different GU registers
 
-def pdb_regs_dict(p):
-    #hbonds for standard wobble
-    #R1= ['G.O6-U.N3', 'G.N1-U.O2']
-    #R2= ['U.N3-G.O6', 'U.O2-G.N1']
 
-    #hbonds for shifted wobble
-    R1= ['G.N1-U.O4', 'G.N2-U.N3']
-    R2= ['U.O4-G.N1', 'U.N3-G.N2']
-
-    
-    r={} #dictionary contains hbonds for reg 2 
+def pdb_regs_dict(p, R1, R2):
+    #take the output from pdb_hbond dictionary and filter out different registers
+    #R1 and R2 are the list of hydrogen bond required for the formation of the register of interest
+    #R and R2 is same but contain strings in opposite directions
+    r={} #dictionary contains hbonds
     for i in p:
         r[i]= p[i][(p[i]['bp_atom'].isin(R1))|(p[i]['bp_atom'].isin(R2))]
         r[i].index = np.arange(0, len(r[i]))
+        print (r[i])
 
-        
-        #if no bp_atom is found in R21, R22, R31, and R32, it is possible to get empty dataframe
-    
-    R= [r]
-    
-    return R
+    return r
 
-#this function will take the pdb_regs dictionary
-#this dictionary has PDB_ID as key and values will be register 2 oe register 3 examples within thecorresponding PDB_ID
-#this function will concate the nonzero dataframes
+
 def concat_regs(R):
+    #this function will take the pdb_regs dictionary
+    #this dictionary has PDB_ID as key and values will be the examples of register of interest within thecorresponding PDB_ID
+    #this function will concate the nonzero dataframes
     R_n=[]
     for i in (R):
         if len(R[i]) ==0:
             pass
         else:
-            #R[i].insert(0, 'PDB_ID', i)
             RR= R[i].drop('index', axis= 1)
             R_n.append(RR)
     R_comb= pd.concat(R_n)
     
     return R_comb
 
-def exclude_non_regs(d):
+def exclude_non_regs(d, R):
     #d is the dataframe contain all the base pairs which contain at least one of the hbonds 
     #present in rare wobble registers
+    #R is the combined list of R1 and R2
 
-    #for standard wobble
-    R= ['G.O6-U.N3', 'G.N1-U.O2', 'U.N3-G.O6', 'U.O2-G.N1']
-    #for shifted wobble
-    R= ['G.N1-U.O4', 'G.N2-U.N3', 'U.O4-G.N1', 'U.N3-G.N2']
-    #dataframe is grouped by one column (reg_2_ID) and then records from another column (bp_atom) for each group are 
     #stored as a list into a new column (list_hbond)
     d1= d.groupby('bp_ID')['bp_atom'].apply(list).reset_index(name= 'list_hbonds')
     
@@ -231,11 +205,8 @@ def exclude_non_regs(d):
     for i, j in enumerate(d1['bp_ID']):
         D[j]= d1['list_hbonds'][i]
         
-        
-    
 
-
-    Rs=[] #reg_2_ID or reg_3_ID will be stored here if they contain the required hbonds for reg2 or reg3, respectively. 
+    Rs=[]
     
     for i in D:
         if len(D[i])>1:
@@ -253,11 +224,16 @@ def exclude_non_regs(d):
 
     return d2
 
-#read the csv file
+#get the inputs
 optparser = OptionParser()
 (options, args) = optparser.parse_args()
 csvfile = args[0]
-cif_dir = args[1]
+cif_dir = args[1] #directory containing all the json files resulted from the DSSR characterization
+
+hb = input("Enter the hydrogen bonds (comma-separated, example: G.O6-U.N3): ")
+R1= hb.split(',')
+R2= [i.split('-')[1]+'-'+i.split('-')[0] for i in R1]
+R= R1+R2
 
 D1= pd.read_csv(csvfile)
 
@@ -267,11 +243,11 @@ D2['bp_res'] = D2['nt1']+'-'+D2['nt2']
 
 D3= pdb_hbond_dict(cif_dir, D2)
 
-D4= (pdb_regs_dict(D3))
+D4= pdb_regs_dict(D3, R1, R2)
 
 D5= concat_regs(D4)
 
-D6= exclude_non_regs(D5) #with hbonds
+D6= exclude_non_regs(D5, R) #with hbonds
 
 drp_cols= ['atom1_serNum', 'atom2_serNum', 'donAcc_type', 'distance', 'atom1_id', 'atom2_id', 'atom_pair', 'residue_pair', 'atom_ID_res1', 'atom_ID_res2', 'bp_atom']
 
