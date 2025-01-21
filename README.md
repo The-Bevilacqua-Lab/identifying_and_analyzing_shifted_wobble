@@ -28,7 +28,7 @@ pip install -r requirements.txt
       ├── LICENSE
 ## Instructions for each script
 ### 1. step_1_data_preparation.py
-This script will read the CSV files (custom search results from [RCSB Protein Data Bank](https://www.rcsb.org/)) stored in the directory specified by the user and output the cleaner version of the result within user-defined resolution cut-off. Please make sure that there are no extra CSV files with a filename starting with 'rcsb_pdb_custom_report_' except the relevant CSV files. 
+Before running the steps below, you need to obtain the custom search files in .csv format collected from the RCSB protein data bank (https://www.rcsb.org/). To begin this, start by choosing to make an advance search on the website's homepage. Next, select the 'Polymer Molecular Features' dropdown and select 'Polyer Entity Type'. From there, select the Entity Type to be RNA and then click to run a search. Then, select 'Create Custom Report' from the Tabular Report dropdown located at the top of the screen. Select: PDB ID, Experimental Method, and all of the resolution options. Finally, click the Run Report button to display your custom report. Select to download the files in CSV format. After this, you will see the downloadable link for the splited CSVs for your query. This script will read these CSV files stored in the directory specified by the user and output the cleaner version of the result within user-defined resolution cut-off. Please make sure that there are no extra CSV files with a filename starting with 'rcsb_pdb_custom_report_' except the relevant CSV files. 
 ```sh
 python step_1_data_preparation.py '/directory_for_custom_RCSB_search_results' '3.2'
 ```
