@@ -44,6 +44,19 @@ for filename in os.listdir(csv_dir):
     if filename.endswith('.csv'):
         if filename.startswith('rcsb_pdb_custom_report_'):
             d= pd.read_csv(filename)
+            #checking if there are two rows of columns
+            unnamed_columns = [col for col in d.columns if col is None or "Unnamed" in str(col)]
+            if len(unnamed_columns)>0:
+                d.columns = d.iloc[0]  # Set the second row (index 1) as the header
+                d = d[1:].reset_index(drop=True)
+            else:
+                pass
+            #updating the 'Refinement Resolution' to 'Resolution'
+            d.columns = d.columns.str.replace("Refinement ", "", regex=False)
+
+            #replacing ' ' with '_' from all columns name
+            d.columns = d.columns.str.replace(' ', '_') 
+
             ds.append(d)
 
 os.chdir(home) 
@@ -53,7 +66,6 @@ os.chdir(home)
 D= pd.concat(ds)
 D.index = np.arange(0, len(D))
 
-D.columns = D.columns.str.replace(' ', '_') #replacing ' ' with '_' from all columns name
 
 D= fix_PDB_ID(D)
 
