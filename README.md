@@ -96,7 +96,7 @@ python step_12_analyze_map_model_cc.py 'results/data-from-step-10.csv' '/directo
 ### 13. step_13_identifying_structural_clusters.py
 This script will identify structural clusters within the non-redundant dataset of the shifted wobbles. For that first, it will generate clipped motifs with the user-defined flanking sequence length which is currently one. These motifs will be stored in a directory which must be specified as an input. The generated structures will be aligned with each other to generate a distance matrix. This distance matrix will then be used to perform a hierarchical clustering. Currently, the distance cut-off is 1.23 Å and requires at least 4 members within a group to be identified as a cluster. 
 ```sh
-python step_13_identifying_structural_clusters.py 'results/data-from-step-12.csv' '/directory_for_motifs/'
+python step_13_identifying_structural_clusters.py 'results/data-from-step-12.csv' '/directory_for_motifs/' 'length of flanking sequences above and below of two residues forming wobble of interest'
 ```
 ### 14. step_14_stem_check.py
 This script will take the output from step 13 and identify the location of the wobbles in the secondary structure motifs. The other inputs will be the directory where all the structures and DSSR output (generated in step 2) are stored, and an integer specifying either standard ('1') or shifted wobble ('2'). 
