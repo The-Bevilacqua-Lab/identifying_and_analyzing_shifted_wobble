@@ -201,14 +201,14 @@ def loop_flank2(res_info, pymoldict, pdbdict, refdict):
                 #add res1_adj as value in new column "pdb_adj_res1"
                     res_info.at[index, "pdb_adj_res1"] = res1_adj
                     res_info.at[index, "pdb_adj_res2"] = res2_adj
-        # Check if matching indices are found
-            flank1_start = max(0, int(res1_adj) - 6)
-            flank1_end = min(len(pdbsequence), int(res1_adj) + 5)
-            res_info.at[index, "flank1"] = pdbsequence[flank1_start:flank1_end]
+                # Check if matching indices are found
+                flank1_start = max(0, int(res1_adj) - 6)
+                flank1_end = min(len(pdbsequence), int(res1_adj) + 5)
+                res_info.at[index, "flank1"] = pdbsequence[flank1_start:flank1_end]
             
-            flank2_start = max(0, int(res2_adj) - 6)
-            flank2_end = min(len(pdbsequence), int(res2_adj) + 5)
-            res_info.at[index, "flank2"] = pdbsequence[flank2_start:flank2_end]
+                flank2_start = max(0, int(res2_adj) - 6)
+                flank2_end = min(len(pdbsequence), int(res2_adj) + 5)
+                res_info.at[index, "flank2"] = pdbsequence[flank2_start:flank2_end]
         #store the value of "mol_org" where pdb_chain == i as refdictstart
         refdictstart = filtered_res_info["mol_org"].values[0]
         #if align_df == "alignment failed", save "alignment failed" to pdb_adj_res1 and pdb_adj_res2
