@@ -110,7 +110,7 @@ def pymol_to_fasta(res_info_df):
         print(f"progress {count+1}/{len(pdb_chain_list)}")
         count += 1
     #write fasta_list to a file
-    with open(str(args.output) + "_pymol.fasta", "w") as f:
+    with open(str(args.output) + ".fasta", "w") as f:
         for i in fasta_list:
             f.write(i[0] + "\n" + i[1] + "\n")
 
@@ -177,14 +177,14 @@ def pdb_to_fasta(res_info_df):
         print(f"progress {count+1}/{len(pdb_chain_list)}")
         count += 1
     #write fasta_list to a file
-    with open(str(args.output) + "_pdb.fasta", "w") as f:
+    with open(str(args.output) + ".fasta", "w") as f:
         for i in fasta_list:
             f.write(i[0] + "\n" + i[1] + "\n")
 
 
 def get_ref_seq(res_info, pdb_fast):
     #add a new column to the res_info dataframe with rna_org
-    res_info["rna_org"] = res_info["Molecule"] + "_" + res_info["Source_Organism_chain"]
+    res_info["rna_org"] = res_info["Molecule"] + "_" + res_info["Source_Organism"]
     #make a list of unique rna_org values
     rna_org_list = res_info["rna_org"].unique()
     #for each value of rna_org, get the average Chain_length_reference where value == rna_org in res_info
@@ -213,7 +213,7 @@ def get_ref_seq(res_info, pdb_fast):
         name = ">" + str(i[0]) + "|" + str(i[1])
         ref_list2.append([name,pdb_dict[pdb_id]])
     #save ref_list2 to a file
-    with open(str(args.output) + "_ref.fasta", "w") as f:
+    with open(str(args.output) + ".fasta", "w") as f:
         for i in ref_list2:
             f.write(i[0] + "\n" + i[1] + "\n")
 
