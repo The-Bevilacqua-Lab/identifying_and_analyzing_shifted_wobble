@@ -85,16 +85,16 @@ for ind, PID in enumerate(D2['PDB_ID']):
             print ('it is working')
             bp_list = pd.json_normalize(data, record_path =['pairs'])
 
-            if len(bp_list) ==0:
-                pass
-            else:
-                for x1, x2 in enumerate(bp_list['bp']):
-                    #the next line is commented out now
-                    #running the next line can take very long time (weeks or months depending on the number of unique PDB_IDs)    
-                    #all_bps.loc[len(all_bps)] = [PID, pdb_info[PID][0], pdb_info[PID][1], bp_list['nt1'][x1], bp_list['nt2'][x1], bp_list['bp'][x1], bp_list['name'][x1], bp_list['Saenger'][x1], bp_list['LW'][x1], bp_list['DSSR'][x1]]
+        if len(bp_list) ==0:
+            pass
+        else:
+            for x1, x2 in enumerate(bp_list['bp']):
+                #the next line is commented out now
+                #running the next line can take very long time (weeks or months depending on the number of unique PDB_IDs)    
+                #all_bps.loc[len(all_bps)] = [PID, pdb_info[PID][0], pdb_info[PID][1], bp_list['nt1'][x1], bp_list['nt2'][x1], bp_list['bp'][x1], bp_list['name'][x1], bp_list['Saenger'][x1], bp_list['LW'][x1], bp_list['DSSR'][x1]]
                 
-                    if x2== bp1[0]+'-'+bp1[1] or x2== bp1[1]+'-'+bp1[0]: #this can be spacify as a variable before this for loop
-                        all_tar_bps.loc[len(all_tar_bps)] = [PID, pdb_info[PID][0], pdb_info[PID][1], bp_list['nt1'][x1], bp_list['nt2'][x1], bp_list['bp'][x1], bp_list['name'][x1], bp_list['Saenger'][x1], bp_list['LW'][x1], bp_list['DSSR'][x1]]
+                if x2== bp1[0]+'-'+bp1[1] or x2== bp1[1]+'-'+bp1[0]: #this can be spacify as a variable before this for loop
+                    all_tar_bps.loc[len(all_tar_bps)] = [PID, pdb_info[PID][0], pdb_info[PID][1], bp_list['nt1'][x1], bp_list['nt2'][x1], bp_list['bp'][x1], bp_list['name'][x1], bp_list['Saenger'][x1], bp_list['LW'][x1], bp_list['DSSR'][x1]]
   
                     
 os.chdir(home)
