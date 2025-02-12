@@ -309,9 +309,9 @@ D5= D4.drop(['data_ext'], axis=1)
 
 #store the finalized data as csv
 #store the finalized data as csv
-if R==1:
+if int(R)==1:
     #for standard wobble
-    D5.to_csv('../../results/all_standard_wobble_RCSB_data.csv', index= False)
-elif R==2:
+    D5.to_csv('../../results/all_standard_wobble_RCSB_data_test.csv', index= False)
+elif int(R)==2:
     #for shifted wobble
     D5.to_csv('../../results/all_shifted_wobble_RCSB_data.csv', index= False)
