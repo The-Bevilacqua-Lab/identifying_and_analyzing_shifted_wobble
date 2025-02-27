@@ -311,7 +311,7 @@ for i, j in enumerate(D4['data_ext']):
 #store the finalized data as csv
 if int(R)==1:
     #for standard wobble
-    D5.to_csv('../../results/all_standard_wobble_RCSB_data.csv', index= False)
+    D4.to_csv('../../results/all_standard_wobble_RCSB_data.csv', index= False)
 elif int(R)==2:
     #for shifted wobble
-    D5.to_csv('../../results/all_shifted_wobble_RCSB_data.csv', index= False)
+    D4.to_csv('../../results/all_shifted_wobble_RCSB_data.csv', index= False)
