@@ -13,6 +13,7 @@ import csv
 import os
 from Bio.Emboss.Applications import NeedleCommandline
 from Bio.Application import ApplicationError
+import subprocess
 #from Bio.Align.Applications import NeedleCommandline
 
 
@@ -30,7 +31,7 @@ df = pd.read_csv(args.inputcsv)
 #add a new column "pdb_chain" that takes the first item when data_ext is split by "."
 df["pdb_chain"] = df["data_ext"].str.split(".").str[0]
 #store the molecule and source organism chain as ref_org
-df["mol_org"] = ">" + df["Molecule"] + "_" + df["Source_Organism_chain"]
+df["mol_org"] = ">" + df["Molecule"] + "_" + df["Source_Organism"]
 
 
 
@@ -62,6 +63,7 @@ def run_needle(asequence, bsequence):
     #if any character in asequence is not A, C, G, U or N, replace it with N
     asequence = "".join([i if i in ["A", "C", "G", "U", "N"] else "N" for i in asequence])
     bsequence = "".join([i if i in ["A", "C", "G", "U", "N"] else "N" for i in bsequence])
+
     try:
         needle_cline = NeedleCommandline(
             asequence="asis::" + asequence,
@@ -70,9 +72,12 @@ def run_needle(asequence, bsequence):
             gapextend=0.5,
             outfile="align.txt")
         stdout, stderr = needle_cline()
+
+
         with open("align.txt", "r") as alignment_file:
             alignment_text = alignment_file.read()
         return alignment_text
+        
     except ApplicationError as e:
         #write "alignment failed: " + str(e) to align.txt
         with open("align.txt", "w") as f:
