@@ -31,7 +31,7 @@ df = pd.read_csv(args.inputcsv)
 #add a new column "pdb_chain" that takes the first item when data_ext is split by "."
 df["pdb_chain"] = df["data_ext"].str.split(".").str[0]
 #store the molecule and source organism chain as ref_org
-df["mol_org"] = ">" + df["Molecule"] + "_" + df["Source_Organism"]
+df["mol_org"] = ">" + df["Molecule"] + "_" + df["Source_Organism_chain"]
 
 
 
