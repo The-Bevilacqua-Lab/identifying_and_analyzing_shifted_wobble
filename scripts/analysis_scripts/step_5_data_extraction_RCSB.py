@@ -305,7 +305,7 @@ for i, j in enumerate(D4['data_ext']):
 
 #Step 4: any additional data cleaning? 
 #we will delete the 'data_ext' column now
-D5= D4.drop(['data_ext'], axis=1)
+#D5= D4.drop(['data_ext'], axis=1)
 
 #store the finalized data as csv
 #store the finalized data as csv
