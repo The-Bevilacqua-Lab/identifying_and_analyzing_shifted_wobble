@@ -184,7 +184,7 @@ def pdb_to_fasta(res_info_df):
 
 def get_ref_seq(res_info, pdb_fast):
     #add a new column to the res_info dataframe with rna_org
-    res_info["rna_org"] = res_info["Molecule"] + "_" + res_info["Source_Organism"]
+    res_info["rna_org"] = res_info["Molecule"] + "_" + res_info["Source_Organism_chain"]
     #make a list of unique rna_org values
     rna_org_list = res_info["rna_org"].unique()
     #for each value of rna_org, get the average Chain_length_reference where value == rna_org in res_info
