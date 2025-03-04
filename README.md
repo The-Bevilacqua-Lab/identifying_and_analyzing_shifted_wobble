@@ -86,7 +86,7 @@ python step_10_redundancy_check.py 'results/data-from-step-9.csv' '1' or '2'
 ### 11. step_11_prepare_structure_files.py
 This script prepares unique structural files for the non-redundant wobble dataset, where each structure may contain multiple standard or shifted wobbles. As part of the preparation process, all modified residues are removed to ensure compatibility with Phenix. This allows Phenix to utilize the structure and the raw electron density map file to calculate map-model correlation coefficients. The inputs for this script are the CSV file generated in Step 10 and the directory designated for storing the clipped structure files.
 ```sh
-python step_11_prepare_structure_files.py 'results/data-from-step-11.csv' '/directory_for_clipped_structures/'
+python step_11_prepare_structure_files.py 'results/data-from-step-10.csv' '/directory_for_clipped_structures/'
 ```
 ### 12. step_12_analyze_map_model_cc.py
 Before executing this script, files containing the correlation coefficient between the electron density maps and modeled structures (map-model cc) must be generated. This involves comparing the clipped structures created in Step 11 with the corresponding electron density files obtained from the [RCSB Protein Data Bank](https://www.rcsb.org/) using the Phenix software package (version: 1.21.1-5286). This script will extract the map-model cc for the nucleobases forming shifted wobbles, as well as the mean and median map-model cc for all residues within the chain containing the corresponding shifted wobble. This script will take the CSV file generated in step 10 and the directory containing the calculated map-model cc files (as .txt or .csv format) as input. 
