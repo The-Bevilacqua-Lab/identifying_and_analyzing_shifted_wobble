@@ -11,6 +11,15 @@ conda install conda-forge::pymol-open-source=3.0.0
 ```sh
 pip install -r requirements.txt
 ```
+- You might need to install EMBOSS Needle manually. First, use the following command to check if it is already installed:
+```sh
+embossversion
+```
+Use the following command to install EMBOSS Needle if it is not already installed:
+```sh
+conda install -c bioconda emboss
+```
+
 - Detailed instructions for creating the environments can be found in the env_instructions.rtf file
 - For characterizing the 3D structure, Dissecting the Spatial Structure of RNA (DSSR, version: v2.2.1-2021jan12) was used
 - The Phenix software package (version: 1.21.1-5286) was used to compare electron density maps and modeled structures.  
@@ -75,7 +84,7 @@ python step_8_get_fastas.py -i 'results/data-from-step-7.csv' -ft ref -pdb pdb_p
 This script takes the csv from step 7 along with three fasta files derived from step_8_get_fastas.py. The ouput is the same csv from step 7 with additional columns for: ref_org, pdb_adj_res1, pdb_adj_res2, flank1, flank2, ref_pdb_chain, adj_res1, and adj_res2
 
 ```sh
-python step_9_adjust_res_index.py -i 'results/data-from-step-7.csv' -py pymol.fasta -pdb pdb.fasta -ref reference.fasta -o 'results/data-from-step-9.csv
+python step_9_adjust_res_index.py -i 'results/data-from-step-7.csv' -py pymol.fasta -pdb pdb.fasta -ref reference.fasta -o 'results/data-from-step-9.csv'
 ```
 
 ### 10. step_10_redundancy_check.py
