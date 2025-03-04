@@ -11,6 +11,15 @@ conda install conda-forge::pymol-open-source=3.0.0
 ```sh
 pip install -r requirements.txt
 ```
+- You might need to install EMBOSS Needle manually. First, use the following command to check if it is already installed:
+```sh
+embossversion
+```
+Use the following command to install EMBOSS Needle if it is not already installed:
+```sh
+conda install -c bioconda emboss
+```
+
 - Detailed instructions for creating the environments can be found in the env_instructions.rtf file
 - For characterizing the 3D structure, Dissecting the Spatial Structure of RNA (DSSR, version: v2.2.1-2021jan12) was used
 - The Phenix software package (version: 1.21.1-5286) was used to compare electron density maps and modeled structures.  
@@ -68,14 +77,14 @@ This script takes the data from step 7 and pulls fasta formatted sequences from 
 ```sh
 python step_8_get_fastas.py -i 'results/data-from-step-7.csv' -ft pymol -o pymol
 python step_8_get_fastas.py -i 'results/data-from-step-7.csv' -ft pdb -o pdb
-python step_8_get_fastas.py -i 'results/data-from-step-7.csv' -ft ref -pdb pdb.fasta -o reference
+python step_8_get_fastas.py -i 'results/data-from-step-7.csv' -ft ref -pdb pdb_pdb.fasta -o reference
 ```
 
 ### 9. step_9_adjust_res_index.py
 This script takes the csv from step 7 along with three fasta files derived from step_8_get_fastas.py. The ouput is the same csv from step 7 with additional columns for: ref_org, pdb_adj_res1, pdb_adj_res2, flank1, flank2, ref_pdb_chain, adj_res1, and adj_res2
 
 ```sh
-python step_9_adjust_res_index.py -i 'results/data-from-step-7.csv' -py pymol.fasta -pdb pdb.fasta -ref reference.fasta -o 'results/data-from-step-9.csv
+python step_9_adjust_res_index.py -i 'results/data-from-step-7.csv' -py pymol.fasta -pdb pdb.fasta -ref reference.fasta -o 'results/data-from-step-9.csv'
 ```
 
 ### 10. step_10_redundancy_check.py
@@ -86,10 +95,10 @@ python step_10_redundancy_check.py 'results/data-from-step-9.csv' '1' or '2'
 ### 11. step_11_prepare_structure_files.py
 This script prepares unique structural files for the non-redundant wobble dataset, where each structure may contain multiple standard or shifted wobbles. As part of the preparation process, all modified residues are removed to ensure compatibility with Phenix. This allows Phenix to utilize the structure and the raw electron density map file to calculate map-model correlation coefficients. The inputs for this script are the CSV file generated in Step 10 and the directory designated for storing the clipped structure files.
 ```sh
-python step_11_prepare_structure_files.py 'results/data-from-step-11.csv' '/directory_for_clipped_structures/'
+python step_11_prepare_structure_files.py 'results/data-from-step-10.csv' '/directory_for_clipped_structures/'
 ```
 ### 12. step_12_analyze_map_model_cc.py
-Before executing this script, files containing the correlation coefficient between the electron density maps and modeled structures (map-model cc) must be generated. This involves comparing the clipped structures created in Step 11 with the corresponding electron density files obtained from the RCSB Protein Data Bank [RCSB Protein Data Bank](https://www.rcsb.org/) using the Phenix software package (version: 1.21.1-5286). This script will extract the map-model cc for the nucleobases forming shifted wobbles, as well as the mean and median map-model cc for all residues within the chain containing the corresponding shifted wobble. This script will take the CSV file generated in step 10 and the directory containing the calculated map-model cc files (as .txt or .csv format) as input. 
+Before executing this script, files containing the correlation coefficient between the electron density maps and modeled structures (map-model cc) must be generated. This involves comparing the clipped structures created in Step 11 with the corresponding electron density files obtained from the [RCSB Protein Data Bank](https://www.rcsb.org/) using the Phenix software package (version: 1.21.1-5286). This script will extract the map-model cc for the nucleobases forming shifted wobbles, as well as the mean and median map-model cc for all residues within the chain containing the corresponding shifted wobble. This script will take the CSV file generated in step 10 and the directory containing the calculated map-model cc files (as .txt or .csv format) as input. 
 ```sh
 python step_12_analyze_map_model_cc.py 'results/data-from-step-10.csv' '/directory_of_map_model_cc_files/'
 ```
