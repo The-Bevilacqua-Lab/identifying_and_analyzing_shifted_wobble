@@ -77,7 +77,7 @@ This script takes the data from step 7 and pulls fasta formatted sequences from 
 ```sh
 python step_8_get_fastas.py -i 'results/data-from-step-7.csv' -ft pymol -o pymol
 python step_8_get_fastas.py -i 'results/data-from-step-7.csv' -ft pdb -o pdb
-python step_8_get_fastas.py -i 'results/data-from-step-7.csv' -ft ref -pdb pdb_pdb.fasta -o reference
+python step_8_get_fastas.py -i 'results/data-from-step-7.csv' -ft ref -pdb pdb.fasta -o reference
 ```
 
 ### 9. step_9_adjust_res_index.py
