@@ -17,7 +17,7 @@ embossversion
 ```
 Use the following command to install EMBOSS Needle if it is not already installed:
 ```sh
-conda install -c bioconda emboss
+conda install -c bioconda emboss=6.6.0
 ```
 
 - Detailed instructions for creating the environments can be found in the env_instructions.rtf file
