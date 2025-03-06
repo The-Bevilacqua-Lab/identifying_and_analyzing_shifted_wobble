@@ -67,7 +67,7 @@ This script calculates the dihedral angles for hydrogen bonds associated with th
 python step_6_data_extraction_structure.py 'results/data-from-step-5.csv' '1' or '2'
 ```
 ### 7. step_7_filter_and_quality_check.py
-This script will check the hydrogen bond quality and filter out those with poor quality. The script requires the CSV file generated in step 6 and an integer input to specify the register: enter '1' for the standard G•U wobble or '2' for the shifted G•U wobble.
+This script will check the hydrogen bond quality and filter out those with poor quality. In this step the source organism and RNA type (column name: 'Molecule') items will also be generalized, therefore, examples such as '16S rRNA', '16S ribosomal RNA', or '16S RIBOSOMAL RNA' will be considered the same RNA in the later steps. However, after executing this step, you might need to manually check for any inconsistency in organism or RNA type information, specifically, the RNA type examples with 'RNA (X-MER)' where X is the length of RNA, if X is comparable with the lengths other RNA types from the same organism, you can replace the 'RNA (X-MER)' with the name of other RNA types. The script requires the CSV file generated in step 6 and an integer input to specify the register: enter '1' for the standard G•U wobble or '2' for the shifted G•U wobble.
 ```sh
 python step_7_filter_and_quality_check.py 'results/data-from-step-6.csv' '1' or '2'
 ```
