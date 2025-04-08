@@ -118,7 +118,7 @@ def pymol_to_fasta(res_info_df):
 def get_pdb_seq(pdb_id, chain_name):
     print(f"pdb progress {pdb_id}_{chain_name}")
     #define url
-    url = "https://www.rcsb.org/fasta/entry/" + pdb_id + "/download"
+    url = "https://www.rcsb.org/fasta/entry/" + pdb_id + "/display"
     response = requests.get(url)
     if response.status_code == 200:
         full_fasta = response.text
