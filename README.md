@@ -44,12 +44,12 @@ python step_1_data_preparation.py '/directory_for_custom_RCSB_search_results' '3
 ### 2. step_2_download_and_characterize.py
 This script downloads the structures and characterizes them using DSSR (version v2.2.1-2021jan12 is required for this pipeline). You need to specify the directory where the CSV file (which will be stored in results by default) generated from step_1_data_preparation.py is stored and the directory where the downloaded structure files and JSON output files from DSSR characterization will be saved.
 ```sh
-python step_2_download_and_characterize.py 'results/data.csv' '/directory_for_structures/'
+python step_2_download_and_characterize.py 'results/data-from-step-1.csv' '/directory_for_structures/'
 ```
 ### 3. step_3_filter_out_bp.py
 This script filters out all the base pairs of interest within the structures downloaded and characterized in step 2. To run the script you need the same CSV file used in step 2, the directory of the structure and JSON output files, and the base pair of interest (order and case do not matter, 'AU', 'Ua', 'au', and 'uA' all indicates the same base pair). The output will be stored in the 'result' folder. 
 ```sh
-python step_3_filter_out_bp.py 'results/data.csv' '/directory_for_structures/' 'GU'
+python step_3_filter_out_bp.py 'results/data-from-step-1.csv' '/directory_for_structures/' 'GU'
 ```
 ### 4. step_4_filter_out_registers.py
 This script will identify the different registers for a base of interest based on the hydrogen bond required to form that pair. To run this script you need the CSV file generated in the previous step (step_3_filter_out_bp.py) and the directory of the structure and JSON files. The script will ask for the hydrogen bond. For standard and shifted wobble, you can write 'G.O6-U.N3,G.N1-U.O2' and 'G.N1-U.O4,G.N2-U.N3', respectively. Do not add any quotation mark to specify the hydrogen bonds. There should not be any space in between the hydrogen bonds, and multiple hydrogen bonds should only be separated by ','.
@@ -72,7 +72,7 @@ This script will check the hydrogen bond quality and filter out those with poor 
 python step_7_filter_and_quality_check.py 'results/data-from-step-6.csv' '1' or '2'
 ```
 ### 8. step_8_get_fastas.py
-This script takes the data from step 7 and pulls fasta formatted sequences from pymol and the pdb server, as well as makes a reference fasta with one representative sequence per RNA type and organism.
+This script takes the data from step 7 and pulls fasta formatted sequences from pymol and the pdb server, as well as makes a reference fasta with one representative sequence per RNA type and organism. The output files are placed in the folder where the python script was run.
 
 ```sh
 python step_8_get_fastas.py -i 'results/data-from-step-7.csv' -ft pymol -o pymol
