@@ -271,7 +271,7 @@ final_resinfo = loop_flank2(df, pymol_dict, pdb_dict, reference_dict)
 
 
 #write final_resinfo to csv
-final_resinfo.to_csv(args.output + ".csv", index=False)
+final_resinfo.to_csv(args.output, index=False)
 
 
 
